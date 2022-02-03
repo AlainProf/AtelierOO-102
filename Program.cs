@@ -6,6 +6,22 @@ namespace atelier2022
     {
         static void Main(string[] args)
         {
+            DateTime dt = new DateTime(1964, 7, 17);
+            Humain h2 = new Humain("Alain", dt);
+            //h2.Afficher();
+
+            Humain h3 = new Humain("Winston Churchill", new DateTime(1874, 11, 30), new DateTime(1965, 1, 24));
+            h3.Afficher();
+
+            Adresse a1 = new Adresse("13761", "Côtes des corbeilles", "Mirabel");
+
+            Humain h4 = new("Marianne P. M.", new DateTime(1989, 04, 20), new Adresse("1234", "Cartier", "Laval" ));
+            h4.Afficher();
+            //Financier();
+        }
+
+        static void Financier()
+        {
             bool go = true;
             ConsoleKey cle;
 
@@ -22,6 +38,7 @@ namespace atelier2022
             }
             //CalculerRemboursementPret();
         }
+
 
         static void CalculerRendementErgo()
         {
