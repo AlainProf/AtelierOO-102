@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>atelier2022</name>
+    </assembly>
+    <members>
+        <member name="T:atelier2022.Adresse">
+            <summary>
+            Classe représentant un lieu sur terre
+            </summary>
+        </member>
+        <member name="F:atelier2022.Adresse.NumCivique">
+            <summary>
+            Numéro civique de la porte
+            </summary>
+        </member>
+        <member name="F:atelier2022.Adresse.Rue">
+            <summary>
+            Rue où est situé l'adresse
+            </summary>
+        </member>
+        <member name="F:atelier2022.Adresse.Ville">
+            <summary>
+            ville de l'adresse
+            </summary>
+        </member>
+        <member name="M:atelier2022.Adresse.#ctor(System.String,System.String,System.String)">
+            <summary>
+            constructeur paramétré
+            </summary>
+            <param name="nc">numéro civique</param>
+            <param name="r">rue</param>
+            <param name="v">ville</param>
+        </member>
+        <member name="T:atelier2022.Humain">
+            <summary>
+            Représente un humain
+            </summary>
+        </member>
+        <member name="P:atelier2022.Humain.Nom">
+            <summary>
+            nom de l'humain
+            </summary>
+        </member>
+        <member name="P:atelier2022.Humain.Naissance">
+            <summary>
+            Date de naissance 
+            </summary>
+        </member>
+        <member name="P:atelier2022.Humain.Deces">
+            <summary>
+            Date de décès s'il est est mort
+            </summary>
+        </member>
+        <member name="P:atelier2022.Humain.Residence">
+            <summary>
+            Endroit où il demeure
+            </summary>
+        </member>
+        <member name="T:atelier2022.Util">
+            <summary>
+            Classe utilitaire pour Menu et différents atelier
+            </summary>
+        </member>
+        <member name="M:atelier2022.Util.Menu">
+            <summary>
+            Menu principal du programme
+            </summary>
+        </member>
+        <member name="M:atelier2022.Util.Options">
+            <summary>
+            Affcihage des options du menu principal
+            </summary>
+        </member>
+        <member name="M:atelier2022.Util.AfficherEntete">
+            <summary>
+            Entête du menu formatté joliment 
+            </summary>
+        </member>
+        <member name="M:atelier2022.Util.ExploHumain">
+            <summary>
+            Initiation à l'orienté objet. Entre autres : la classe, les propriétés, méthodes, niveau d'encapsulation
+            composition
+            </summary>
+        </member>
+        <member name="M:atelier2022.Util.Financier">
+            <summary>
+              Introduction au C# avec des calculs finaciers procéduraux de placements et de dettes
+            
+            </summary>
+        </member>
+        <member name="M:atelier2022.Util.CalculerRendementErgo">
+            <summary>
+            Calcul du rendement d'un dépôt en boucle 
+            </summary>
+        </member>
+        <member name="T:atelier2022.Program">
+            <summary>
+            Programme démontrant toutes les notions enseignées ds le cours 2C6 POO
+            </summary>
+        </member>
+    </members>
+</doc>

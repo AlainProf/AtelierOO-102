@@ -5,4 +5,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\amartel\atelieroo-102\atelier2022.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

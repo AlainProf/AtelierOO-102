@@ -1,65 +1,84 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//---------------------
+//  Devel : Alain Martel
+//  Fichier
+//  Projet
+//  Date 
+
+using System;
+
 
 namespace atelier2022
 {
+    /// <summary>
+    /// Représente un humain
+    /// </summary>
     class Humain
     {
-        string _nom;
-        DateTime _naissance;
-        DateTime _deces;
-        Adresse _residence;
-
+        /// <summary>
+        /// nom de l'humain
+        /// </summary>
+        public string Nom { get; set; }
+        /// <summary>
+        /// Date de naissance 
+        /// </summary>
+        public DateTime Naissance { get;  set; }
+        /// <summary>
+        /// Date de décès s'il est est mort
+        /// </summary>
+        public DateTime Deces { get; set; }
+        /// <summary>
+        /// Endroit où il demeure
+        /// </summary>
+        public Adresse Residence { get; set; }
+        
         public Humain()
         {
-            _nom = "inconnu";
-            _naissance = DateTime.Now;
-            _deces = new DateTime(1, 1, 1);
-            _residence = null;
+            Nom = "inconnu";
+            Naissance = DateTime.Now;
+            Deces = new DateTime(1, 1, 1);
+            Residence = null;
         }
         public Humain(string n, DateTime na)
         {
-            _nom = n;
-            _naissance = na;
-            _deces = new DateTime(1, 1, 1);
-            _residence = null;
+            Nom = n;
+            Naissance = na;
+            Deces = new DateTime(1, 1, 1);
+            Residence = null;
         }
         public Humain(string n, DateTime na, Adresse a)
         {
-            _nom = n;
-            _naissance = na;
-            _deces = new DateTime(1, 1, 1);
-            _residence = a;
+            Nom = n;
+            Naissance = na;
+            Deces = new DateTime(1, 1, 1);
+            Residence = a;
         }
         public Humain(string n, DateTime na, DateTime de)
         {
-            _nom = n;
-            _naissance = na;
-            _deces = de ;
-            _residence = null;
+            Nom = n;
+            Naissance = na;
+            Deces = de ;
+            Residence = null;
         }
 
         public void Afficher()
         {
-            Console.WriteLine("nom:{0}", _nom);
-            Console.WriteLine("né le :{0}", _naissance);
+            Console.WriteLine("nom:{0}", Nom);
+            System.Console.WriteLine("né le :{0}", Naissance);
             Console.WriteLine(" agé de {0}", Age());
             // commentaire
             if (!EstVivant())
             {
-                Console.WriteLine("Décédé le " + _deces);
+                Console.WriteLine("Décédé le " + Deces);
                 Console.WriteLine("Il y a {0} ans ", AnneesDepuisDeces());
             }
-            if (_residence != null)
+            if (Residence != null)
             {
                 Console.Write("domicilié au ");
-                _residence.Afficher();
+                Residence.Afficher();
             }
             else
                 Console.WriteLine("SDF");
+            Console.WriteLine("_______________________________________");
         }
 
         private int Age()
@@ -67,11 +86,11 @@ namespace atelier2022
             long delta;
             if (EstVivant())
             {
-                delta = DateTime.Now.Ticks - _naissance.Ticks;
+                delta = DateTime.Now.Ticks - Naissance.Ticks;
             }
             else
             {
-                delta = _deces.Ticks - _naissance.Ticks;
+                delta = Deces.Ticks - Naissance.Ticks;
             }
 
             delta /= 10000000;
@@ -82,7 +101,7 @@ namespace atelier2022
         }
         private int AnneesDepuisDeces()
         {
-            long delta = DateTime.Now.Ticks - _deces.Ticks;
+            long delta = DateTime.Now.Ticks - Deces.Ticks;
 
             delta /= 10000000;
             delta = delta / ((long)365.24 * 24 * 3600);
@@ -93,12 +112,12 @@ namespace atelier2022
 
         public bool EstVivant()
         {
-            return !(_deces.Ticks > 1000000000);
+            return !(Deces.Ticks > 1000000000);
         }
 
         public void Mourir()
         {
-            _deces = DateTime.Now;
+            Deces = DateTime.Now;
         }
     }
 }
