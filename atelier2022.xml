@@ -32,6 +32,59 @@
             <param name="r">rue</param>
             <param name="v">ville</param>
         </member>
+        <member name="M:atelier2022.Adresse.Afficher">
+            <summary>
+            Affichage des détails de l'adresse
+            </summary>
+        </member>
+        <member name="T:atelier2022.Exploration">
+            <summary>
+            Classe utilitaire pour Menu et différents ateliers
+            </summary>
+        </member>
+        <member name="M:atelier2022.Exploration.ExploHumain">
+            <summary>
+            Initiation à l'orienté objet. Entre autres : la classe, les propriétés, méthodes, niveau d'encapsulation, ...
+            composition
+            </summary>
+        </member>
+        <member name="M:atelier2022.Exploration.CalculerRendementErgo">
+            <summary>
+            Calcul du rendement d'un dépôt en boucle 
+            </summary>
+        </member>
+        <member name="M:atelier2022.Exploration.SaisirParametreDepot(System.Double@,System.Double@,System.Int32@,System.String@)">
+            <summary>
+            Permet de saisir les paramètres de calcul désiré par l'utilisateur
+            </summary>
+            <param name="depot">Le dépôt initial</param>
+            <param name="tauxInt">taux d'intérêt annuel</param>
+            <param name="duree">nombre d'années où le dépôt fructifiera</param>
+            <param name="compo">fréqwuence de composition de l'intérêt</param>
+        </member>
+        <member name="M:atelier2022.Exploration.CalculerRemboursementPret">
+            <summary>
+            Saisie des paramètres et Calcul du temps nécessaire pour rembourser une dette
+            </summary>
+        </member>
+        <member name="M:atelier2022.Exploration.CalculerRemboursement(System.Double,System.Double,System.Double)">
+            <summary>
+             Calcul du temps nécessaire pour rembourser une dette
+            </summary>
+            <param name="bal">La balance du prêt à rembourser</param>
+            <param name="inte">Taux d'intéêt annuel sur la dette</param>
+            <param name="mens">Remboursement mensuels</param>
+        </member>
+        <member name="M:atelier2022.Exploration.ArrayInt">
+            <summary>
+            Manip des Array en C#: initialisation, parcours, tri, ...
+            </summary>
+        </member>
+        <member name="M:atelier2022.Exploration.ArrayHumain">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:atelier2022.Humain">
             <summary>
             Représente un humain
@@ -39,7 +92,7 @@
         </member>
         <member name="P:atelier2022.Humain.Nom">
             <summary>
-            nom de l'humain
+            Nom de l'humain
             </summary>
         </member>
         <member name="P:atelier2022.Humain.Naissance">
@@ -57,46 +110,67 @@
             Endroit où il demeure
             </summary>
         </member>
-        <member name="T:atelier2022.Util">
+        <member name="M:atelier2022.Humain.#ctor">
             <summary>
-            Classe utilitaire pour Menu et différents atelier
+            Coinstructeur par défaut
             </summary>
         </member>
-        <member name="M:atelier2022.Util.Menu">
+        <member name="M:atelier2022.Humain.#ctor(System.String,System.DateTime)">
             <summary>
-            Menu principal du programme
+            Constructeur pour humain vivant dont on ne connaît pas l'adresse
+            </summary>
+            <param name="n">nom</param>
+            <param name="na">date de naissance</param>
+        </member>
+        <member name="M:atelier2022.Humain.#ctor(System.String,System.DateTime,atelier2022.Adresse)">
+            <summary>
+            Constructeur pour humain vivant dont on connaît l'adresse
+            </summary>
+            <param name="n">nom</param>
+            <param name="na">date de naissance</param>
+            <param name="a">adresse de sa résidence</param>
+        </member>
+        <member name="M:atelier2022.Humain.#ctor(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Constructeur pour humain mort
+            </summary>
+            <param name="n">nom</param>
+            <param name="na">date de naissance</param>
+            <param name="de">date de trépas</param>
+        </member>
+        <member name="M:atelier2022.Humain.Afficher">
+            <summary>
+            Affiche une instance avec ces détails
             </summary>
         </member>
-        <member name="M:atelier2022.Util.Options">
+        <member name="M:atelier2022.Humain.Mourir">
             <summary>
-            Affcihage des options du menu principal
+            Lorsqu'un humaibn trépasse on fixe la date de décès
             </summary>
         </member>
-        <member name="M:atelier2022.Util.AfficherEntete">
+        <member name="M:atelier2022.ManipArray.Introduction">
             <summary>
-            Entête du menu formatté joliment 
-            </summary>
-        </member>
-        <member name="M:atelier2022.Util.ExploHumain">
-            <summary>
-            Initiation à l'orienté objet. Entre autres : la classe, les propriétés, méthodes, niveau d'encapsulation
-            composition
-            </summary>
-        </member>
-        <member name="M:atelier2022.Util.Financier">
-            <summary>
-              Introduction au C# avec des calculs finaciers procéduraux de placements et de dettes
-            
-            </summary>
-        </member>
-        <member name="M:atelier2022.Util.CalculerRendementErgo">
-            <summary>
-            Calcul du rendement d'un dépôt en boucle 
+            Méthode pour explorer les diverses possibilités des Array C#
             </summary>
         </member>
         <member name="T:atelier2022.Program">
             <summary>
             Programme démontrant toutes les notions enseignées ds le cours 2C6 POO
+            </summary>
+        </member>
+        <member name="M:atelier2022.Program.Menu">
+            <summary>
+            Affcihage du menu principal du programme
+            </summary>
+        </member>
+        <member name="M:atelier2022.Program.Options">
+            <summary>
+            Affcihage des options du menu principal
+            </summary>
+        </member>
+        <member name="M:atelier2022.Program.AfficherEntete">
+            <summary>
+            Entête formattée joliment du menu  
             </summary>
         </member>
     </members>

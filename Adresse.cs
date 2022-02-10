@@ -38,6 +38,9 @@ namespace atelier2022
             Ville = v;
         }
 
+        /// <summary>
+        /// Affichage des détails de l'adresse
+        /// </summary>
         public void Afficher()
         {
             Console.WriteLine(NumCivique + " rue {0}" + ", ville {1}", Rue, Ville);

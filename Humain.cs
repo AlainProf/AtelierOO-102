@@ -1,11 +1,4 @@
-﻿//---------------------
-//  Devel : Alain Martel
-//  Fichier
-//  Projet
-//  Date 
-
-using System;
-
+﻿using System;
 
 namespace atelier2022
 {
@@ -15,7 +8,7 @@ namespace atelier2022
     class Humain
     {
         /// <summary>
-        /// nom de l'humain
+        /// Nom de l'humain
         /// </summary>
         public string Nom { get; set; }
         /// <summary>
@@ -31,6 +24,9 @@ namespace atelier2022
         /// </summary>
         public Adresse Residence { get; set; }
         
+        /// <summary>
+        /// Coinstructeur par défaut
+        /// </summary>
         public Humain()
         {
             Nom = "inconnu";
@@ -38,6 +34,11 @@ namespace atelier2022
             Deces = new DateTime(1, 1, 1);
             Residence = null;
         }
+        /// <summary>
+        /// Constructeur pour humain vivant dont on ne connaît pas l'adresse
+        /// </summary>
+        /// <param name="n">nom</param>
+        /// <param name="na">date de naissance</param>
         public Humain(string n, DateTime na)
         {
             Nom = n;
@@ -45,6 +46,13 @@ namespace atelier2022
             Deces = new DateTime(1, 1, 1);
             Residence = null;
         }
+
+        /// <summary>
+        /// Constructeur pour humain vivant dont on connaît l'adresse
+        /// </summary>
+        /// <param name="n">nom</param>
+        /// <param name="na">date de naissance</param>
+        /// <param name="a">adresse de sa résidence</param>
         public Humain(string n, DateTime na, Adresse a)
         {
             Nom = n;
@@ -52,6 +60,13 @@ namespace atelier2022
             Deces = new DateTime(1, 1, 1);
             Residence = a;
         }
+
+        /// <summary>
+        /// Constructeur pour humain mort
+        /// </summary>
+        /// <param name="n">nom</param>
+        /// <param name="na">date de naissance</param>
+        /// <param name="de">date de trépas</param>
         public Humain(string n, DateTime na, DateTime de)
         {
             Nom = n;
@@ -60,6 +75,9 @@ namespace atelier2022
             Residence = null;
         }
 
+        /// <summary>
+        /// Affiche une instance avec ces détails
+        /// </summary>
         public void Afficher()
         {
             Console.WriteLine("nom:{0}", Nom);
@@ -78,9 +96,21 @@ namespace atelier2022
             }
             else
                 Console.WriteLine("SDF");
-            Console.WriteLine("_______________________________________");
+            Console.WriteLine(".....");
         }
 
+        /// <summary>
+        /// Lorsqu'un humaibn trépasse on fixe la date de décès
+        /// </summary>
+        public void Mourir()
+        {
+            Deces = DateTime.Now;
+        }
+
+
+        //------------------------------
+        //
+        //------------------------------
         private int Age()
         {
             long delta;
@@ -94,31 +124,32 @@ namespace atelier2022
             }
 
             delta /= 10000000;
-            delta = delta / ((long)365.24 * 24 * 3600);
-
-            //Console.WriteLine("Delta:" + delta);
+            delta /= ((long)365.24 * 24 * 3600);
+                       
             return (int)delta;
         }
+
+        //------------------------------
+        //
+        //------------------------------
         private int AnneesDepuisDeces()
         {
             long delta = DateTime.Now.Ticks - Deces.Ticks;
 
             delta /= 10000000;
-            delta = delta / ((long)365.24 * 24 * 3600);
+            delta /= ((long)365.24 * 24 * 3600);
 
-            //Console.WriteLine("Delta:" + delta);
             return (int)delta;
         }
 
-        public bool EstVivant()
+        //------------------------------
+        //
+        //------------------------------
+        private bool EstVivant()
         {
             return !(Deces.Ticks > 1000000000);
         }
 
-        public void Mourir()
-        {
-            Deces = DateTime.Now;
-        }
     }
 }
 
