@@ -1,4 +1,5 @@
 ﻿using atelier2022.classes;
+using atelier2022.classesExplo;
 using System;
 
 namespace atelier2022
@@ -11,8 +12,15 @@ namespace atelier2022
         static Menu MenuPrincipal = new Menu("Atelier 2C6 POO");
         static void Main(string[] args)
         {
-            MenuPrincipal.AjouterItem(new MenuItem("Lecture de fichiers", 'L', Exploration.ExploLectureFichier));
-            MenuPrincipal.AjouterItem(new MenuItem("Ecriture de fichiers", 'E', Exploration.ExploEcritureFichier));
+            MenuPrincipal.AjouterItem(new MenuItem("Lecture de fichiers", 'L', ExploManipFichiers.ExploLectureFichier));
+            MenuPrincipal.AjouterItem(new MenuItem("Ecriture de fichiers", 'E', ExploManipFichiers.ExploEcritureFichier));
+            MenuPrincipal.AjouterItem(new MenuItem("Classe Humain", 'H', Exploration.ExploHumain));
+            MenuPrincipal.AjouterItem(new MenuItem("Rendement d'un dépôt", 'R', Exploration.CalculerRendementErgo));
+            MenuPrincipal.AjouterItem(new MenuItem("Remboursement d'un prêt", 'P', Exploration.CalculerRemboursementPret));
+            MenuPrincipal.AjouterItem(new MenuItem("Tableau d'entiers", 'T', Exploration.ArrayInt));
+            MenuPrincipal.AjouterItem(new MenuItem("Tableau d'instances", 'A', Exploration.ArrayHumain));
+            ManipListe ml = new();
+            MenuPrincipal.AjouterItem(new MenuItem("Liste d'instances", 'I', ml.ListeHumains));
 
             MenuPrincipal.Afficher();
             MenuPrincipal.SaisirChoix();
@@ -21,6 +29,7 @@ namespace atelier2022
 
         /// <summary>
         /// Affcihage du menu principal du programme
+        /// Obsolete: on utilise mtn les menu OO
         /// </summary>
         public static void MenuOld()
         {
@@ -64,6 +73,7 @@ namespace atelier2022
 
         /// <summary>
         /// Affcihage des options du menu principal
+        /// /// Obsolete: on utilise mtn les menu OO
         /// </summary>
         static void Options()
         {
@@ -82,6 +92,7 @@ namespace atelier2022
 
         /// <summary>
         /// Entête formattée joliment du menu  
+        /// Obsolete: on utilise mtn les menu OO
         /// </summary>
         static void AfficherEntete()
         {

@@ -53,7 +53,10 @@ namespace atelier2022.classes
                 {
                     if ( (char)keyInfo.Key == menuItem.Cle)
                     {
+                        Console.Clear();
                         menuItem.Action();
+                        Console.ReadKey();
+                        Afficher();
                     }
                 }
             }

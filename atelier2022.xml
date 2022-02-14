@@ -37,6 +37,18 @@
             Affichage des détails de l'adresse
             </summary>
         </member>
+        <member name="M:atelier2022.classesExplo.ExploManipFichiers.ExploLectureFichier">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:atelier2022.classesExplo.ExploManipFichiers.ExploEcritureFichier">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:atelier2022.Exploration">
             <summary>
             Classe utilitaire pour Menu et différents ateliers
@@ -84,18 +96,6 @@
             <summary>
             
             </summary>
-        </member>
-        <member name="M:atelier2022.Exploration.ExploLectureFichier">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:atelier2022.Exploration.ExploEcritureFichier">
-            <summary>
-            
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:atelier2022.Humain">
             <summary>
@@ -173,16 +173,19 @@
         <member name="M:atelier2022.Program.MenuOld">
             <summary>
             Affcihage du menu principal du programme
+            Obsolete: on utilise mtn les menu OO
             </summary>
         </member>
         <member name="M:atelier2022.Program.Options">
             <summary>
             Affcihage des options du menu principal
+            /// Obsolete: on utilise mtn les menu OO
             </summary>
         </member>
         <member name="M:atelier2022.Program.AfficherEntete">
             <summary>
             Entête formattée joliment du menu  
+            Obsolete: on utilise mtn les menu OO
             </summary>
         </member>
     </members>

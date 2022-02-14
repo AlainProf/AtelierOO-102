@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace atelier2022
 {
@@ -12,7 +13,7 @@ namespace atelier2022
         /// Initiation à l'orienté objet. Entre autres : la classe, les propriétés, méthodes, niveau d'encapsulation, ...
         /// composition
         /// </summary>
-        public static void ExploHumain()
+        public static int ExploHumain()
         {
             System.DateTime dt = new System.DateTime(1964, 7, 17);
             Humain h2 = new Humain("Alain", dt);
@@ -26,12 +27,13 @@ namespace atelier2022
 
             Humain h4 = new("Marianne P. M.", new DateTime(1989, 04, 20), new Adresse("1234", "Cartier", "Laval"));
             h4.Afficher();
+            return 0;
         }
 
         /// <summary>
         /// Calcul du rendement d'un dépôt en boucle 
         /// </summary>
-        public static void CalculerRendementErgo()
+        public static int CalculerRendementErgo()
         {          
             double rendementCumul;
             SaisirParametreDepot(out double depot, out double tauxInt, out int duree, out string compo);
@@ -53,6 +55,7 @@ namespace atelier2022
                 Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
             }
             Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul.ToString(".00"));
+            return 0;
         }
 
         /// <summary>
@@ -85,7 +88,7 @@ namespace atelier2022
         /// <summary>
         /// Saisie des paramètres et Calcul du temps nécessaire pour rembourser une dette
         /// </summary>
-        public static void CalculerRemboursementPret()
+        public static int CalculerRemboursementPret()
         {
             //string strPaiementMinimum;
             string strInteret;
@@ -99,6 +102,7 @@ namespace atelier2022
             Console.WriteLine("remboursement mensuel:");
             strPaiementMensuel = Console.ReadLine();
             CalculerRemboursement(Convert.ToDouble(strBalance), Convert.ToDouble(strInteret), Convert.ToDouble(strPaiementMensuel));
+            return 0;
         }
 
         /// <summary>
@@ -113,51 +117,37 @@ namespace atelier2022
             Console.WriteLine("Credit de {0} à {1}% avec mensualité de {2} ", residu, inte * 100, mens);
             int nbMois = 0;
             double interetCumul = 0;
+
+            Console.WriteLine("Mois | intérêt | intérêt cum | Capital");
+            Console.WriteLine("______________________________________");
+
             while (residu > 0)
             {
-                Console.Write("Mois {0}, intéret: {1} Capital: {2} ", nbMois + 1,
-                                                        (residu * inte / 12).ToString(".00"),
-                                                        (mens - (residu * inte / 12)).ToString(".00"));
+                nbMois++;
                 residu -= mens - ((residu * inte) / 12);
                 interetCumul += (residu * inte) / 12;
-                Console.WriteLine(" balance à payer : {0}. Intérêt cumulé: {1}", residu.ToString(".00"), interetCumul.ToString(".00"));
-                nbMois++;
+                StringBuilder s = new();
+                s.AppendFormat("{0}\t{1}\t{2}\t{3}", nbMois, ((residu * inte) / 12).ToString(".00"), interetCumul.ToString(".00"), (mens- (residu * inte) / 12).ToString(".00"));
+                Console.WriteLine( s );
             }
-            Console.WriteLine("Réglement du prêt en {0} mois", nbMois);
+            Console.WriteLine("\nRéglement du prêt en {0} mois", nbMois);
         }
 
         /// <summary>
         /// Manip des Array en C#: initialisation, parcours, tri, ...
         /// </summary>
-        public static void ArrayInt()
+        public static int ArrayInt()
         {
             ManipArray.Introduction();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static void ArrayHumain()
-        {
-            ManipArray.ArrayDInstance();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public static int ExploLectureFichier()
-        {
-            Console.WriteLine("Exploration des méthodes de lecture de fichiers sur disque");
             return 0;
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        public static int ExploEcritureFichier()
+        public static int ArrayHumain()
         {
-            Console.WriteLine("Ecriture");
+            ManipArray.ArrayDInstance();
             return 0;
         }
     }

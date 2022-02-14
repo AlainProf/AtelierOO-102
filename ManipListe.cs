@@ -8,7 +8,7 @@ namespace atelier2022
 {
     class ManipListe
     {
-        public void ListeHumains()
+        public int ListeHumains()
         {
             List<Humain> classe102 = new();
 
@@ -37,10 +37,11 @@ namespace atelier2022
             {
                 h.Afficher();
             }
+            return 0;
 
 
         }
-        static int plusJeune(Humain ha, Humain hb)
+        public static int plusJeune(Humain ha, Humain hb)
         {
             if (ha.Naissance.Ticks < hb.Naissance.Ticks)
                 return 1;
