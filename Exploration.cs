@@ -141,5 +141,24 @@ namespace atelier2022
         {
             ManipArray.ArrayDInstance();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static int ExploLectureFichier()
+        {
+            Console.WriteLine("Exploration des méthodes de lecture de fichiers sur disque");
+            return 0;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static int ExploEcritureFichier()
+        {
+            Console.WriteLine("Ecriture");
+            return 0;
+        }
     }
 }

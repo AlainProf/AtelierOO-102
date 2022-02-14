@@ -1,4 +1,5 @@
-﻿using System;
+﻿using atelier2022.classes;
+using System;
 
 namespace atelier2022
 {
@@ -7,15 +8,21 @@ namespace atelier2022
     /// </summary>
     class Program
     {
+        static Menu MenuPrincipal = new Menu("Atelier 2C6 POO");
         static void Main(string[] args)
         {
-            Menu();
+            MenuPrincipal.AjouterItem(new MenuItem("Lecture de fichiers", 'L', Exploration.ExploLectureFichier));
+            MenuPrincipal.AjouterItem(new MenuItem("Ecriture de fichiers", 'E', Exploration.ExploEcritureFichier));
+
+            MenuPrincipal.Afficher();
+            MenuPrincipal.SaisirChoix();
+            //MenuOld();
         }
 
         /// <summary>
         /// Affcihage du menu principal du programme
         /// </summary>
-        public static void Menu()
+        public static void MenuOld()
         {
             ConsoleKeyInfo touche;
             Console.Clear();

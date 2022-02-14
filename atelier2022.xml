@@ -85,6 +85,18 @@
             
             </summary>
         </member>
+        <member name="M:atelier2022.Exploration.ExploLectureFichier">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:atelier2022.Exploration.ExploEcritureFichier">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:atelier2022.Humain">
             <summary>
             Représente un humain
@@ -158,7 +170,7 @@
             Programme démontrant toutes les notions enseignées ds le cours 2C6 POO
             </summary>
         </member>
-        <member name="M:atelier2022.Program.Menu">
+        <member name="M:atelier2022.Program.MenuOld">
             <summary>
             Affcihage du menu principal du programme
             </summary>
