@@ -4,39 +4,6 @@
         <name>atelier2022</name>
     </assembly>
     <members>
-        <member name="T:atelier2022.Adresse">
-            <summary>
-            Classe représentant un lieu sur terre
-            </summary>
-        </member>
-        <member name="F:atelier2022.Adresse.NumCivique">
-            <summary>
-            Numéro civique de la porte
-            </summary>
-        </member>
-        <member name="F:atelier2022.Adresse.Rue">
-            <summary>
-            Rue où est situé l'adresse
-            </summary>
-        </member>
-        <member name="F:atelier2022.Adresse.Ville">
-            <summary>
-            ville de l'adresse
-            </summary>
-        </member>
-        <member name="M:atelier2022.Adresse.#ctor(System.String,System.String,System.String)">
-            <summary>
-            constructeur paramétré
-            </summary>
-            <param name="nc">numéro civique</param>
-            <param name="r">rue</param>
-            <param name="v">ville</param>
-        </member>
-        <member name="M:atelier2022.Adresse.Afficher">
-            <summary>
-            Affichage des détails de l'adresse
-            </summary>
-        </member>
         <member name="M:atelier2022.classesExplo.ExploManipFichiers.ExploLectureFichier">
             <summary>
             
@@ -93,6 +60,135 @@
             </summary>
         </member>
         <member name="M:atelier2022.Exploration.ArrayHumain">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:atelier2022.ManipArray.Introduction">
+            <summary>
+            Méthode pour explorer les diverses possibilités des Array C#
+            </summary>
+        </member>
+        <member name="T:atelier2022.Adresse">
+            <summary>
+            Classe représentant un lieu sur terre
+            </summary>
+        </member>
+        <member name="F:atelier2022.Adresse.NumCivique">
+            <summary>
+            Numéro civique de la porte
+            </summary>
+        </member>
+        <member name="F:atelier2022.Adresse.Rue">
+            <summary>
+            Rue où est situé l'adresse
+            </summary>
+        </member>
+        <member name="F:atelier2022.Adresse.Ville">
+            <summary>
+            ville de l'adresse
+            </summary>
+        </member>
+        <member name="M:atelier2022.Adresse.#ctor(System.String,System.String,System.String)">
+            <summary>
+            constructeur paramétré
+            </summary>
+            <param name="nc">numéro civique</param>
+            <param name="r">rue</param>
+            <param name="v">ville</param>
+        </member>
+        <member name="M:atelier2022.Adresse.Afficher">
+            <summary>
+            Affichage des détails de l'adresse
+            </summary>
+        </member>
+        <member name="T:atelier2022.classes.Citoyen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:atelier2022.classes.Citoyen.NAS">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:atelier2022.classes.Citoyen.Sexe">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:atelier2022.classes.Citoyen.Scolarite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:atelier2022.classes.Citoyen.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:atelier2022.classes.Citoyen.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="n"></param>
+            <param name="s"></param>
+        </member>
+        <member name="M:atelier2022.classes.Citoyen.#ctor(System.String,System.DateTime,atelier2022.Adresse,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nom"></param>
+            <param name="nais"></param>
+            <param name="res"></param>
+            <param name="n"></param>
+            <param name="s"></param>
+        </member>
+        <member name="M:atelier2022.classes.Citoyen.AjouterDiplome(atelier2022.classes.Diplome)">
+            <summary>
+            
+            </summary>
+            <param name="d"></param>
+        </member>
+        <member name="M:atelier2022.classes.Citoyen.Afficher">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:atelier2022.classes.Diplome">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:atelier2022.classes.Diplome.Niveau">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:atelier2022.classes.Diplome.Nom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:atelier2022.classes.Diplome.Obtention">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:atelier2022.classes.Diplome.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:atelier2022.classes.Diplome.#ctor(System.String,System.String,System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="n"></param>
+            <param name="no"></param>
+            <param name="o"></param>
+        </member>
+        <member name="M:atelier2022.classes.Diplome.Afficher">
             <summary>
             
             </summary>
@@ -160,32 +256,9 @@
             Lorsqu'un humaibn trépasse on fixe la date de décès
             </summary>
         </member>
-        <member name="M:atelier2022.ManipArray.Introduction">
-            <summary>
-            Méthode pour explorer les diverses possibilités des Array C#
-            </summary>
-        </member>
         <member name="T:atelier2022.Program">
             <summary>
             Programme démontrant toutes les notions enseignées ds le cours 2C6 POO
-            </summary>
-        </member>
-        <member name="M:atelier2022.Program.MenuOld">
-            <summary>
-            Affcihage du menu principal du programme
-            Obsolete: on utilise mtn les menu OO
-            </summary>
-        </member>
-        <member name="M:atelier2022.Program.Options">
-            <summary>
-            Affcihage des options du menu principal
-            /// Obsolete: on utilise mtn les menu OO
-            </summary>
-        </member>
-        <member name="M:atelier2022.Program.AfficherEntete">
-            <summary>
-            Entête formattée joliment du menu  
-            Obsolete: on utilise mtn les menu OO
             </summary>
         </member>
     </members>

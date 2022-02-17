@@ -55,6 +55,7 @@ namespace atelier2022
         /// <param name="a">adresse de sa résidence</param>
         public Humain(string n, DateTime na, Adresse a)
         {
+            Console.WriteLine("constructeur de base");
             Nom = n;
             Naissance = na;
             Deces = new DateTime(1, 1, 1);
@@ -78,7 +79,7 @@ namespace atelier2022
         /// <summary>
         /// Affiche une instance avec ces détails
         /// </summary>
-        public void Afficher()
+        public virtual void Afficher()
         {
             Console.WriteLine("nom:{0}", Nom);
             System.Console.WriteLine("né le :{0}", Naissance);
