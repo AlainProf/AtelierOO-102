@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 
 namespace atelier2022
 {
@@ -34,7 +35,7 @@ namespace atelier2022
         /// Calcul du rendement d'un dépôt en boucle 
         /// </summary>
         public static int CalculerRendementErgo()
-        {          
+        {
             double rendementCumul;
             SaisirParametreDepot(out double depot, out double tauxInt, out int duree, out string compo);
             rendementCumul = depot;
@@ -47,11 +48,11 @@ namespace atelier2022
                 case "q": freqComp = 365; break;
             }
 
-            
+
             while (tempsCumul < duree * freqComp)
             {
                 tempsCumul++;
-                rendementCumul += (tauxInt/ freqComp) * rendementCumul;
+                rendementCumul += (tauxInt / freqComp) * rendementCumul;
                 Console.WriteLine("iter {0}: rendementCumul {1}", tempsCumul, rendementCumul.ToString(".00"));
             }
             Console.WriteLine("A terme mon dépot vaut: {0}", rendementCumul.ToString(".00"));
@@ -70,7 +71,7 @@ namespace atelier2022
             string strDepot;
             string strTauxInt;
             string strDuree;
-            
+
             Console.WriteLine("Depot:");
             strDepot = Console.ReadLine();
             Console.WriteLine("Intérêt:");
@@ -83,7 +84,7 @@ namespace atelier2022
             depot = Convert.ToDouble(strDepot);
             tauxInt = Convert.ToDouble(strTauxInt);
             duree = Convert.ToInt32(strDuree);
-         }
+        }
 
         /// <summary>
         /// Saisie des paramètres et Calcul du temps nécessaire pour rembourser une dette
@@ -127,8 +128,8 @@ namespace atelier2022
                 residu -= mens - ((residu * inte) / 12);
                 interetCumul += (residu * inte) / 12;
                 StringBuilder s = new();
-                s.AppendFormat("{0}\t{1}\t{2}\t{3}", nbMois, ((residu * inte) / 12).ToString(".00"), interetCumul.ToString(".00"), (mens- (residu * inte) / 12).ToString(".00"));
-                Console.WriteLine( s );
+                s.AppendFormat("{0}\t{1}\t{2}\t{3}", nbMois, ((residu * inte) / 12).ToString(".00"), interetCumul.ToString(".00"), (mens - (residu * inte) / 12).ToString(".00"));
+                Console.WriteLine(s);
             }
             Console.WriteLine("\nRéglement du prêt en {0} mois", nbMois);
         }
@@ -149,6 +150,90 @@ namespace atelier2022
         {
             ManipArray.ArrayDInstance();
             return 0;
+        }
+
+        public static int ExploCouleur()
+        {
+            Console.WriteLine("Arc en ciel");
+
+            int nbCol = Console.WindowWidth;
+            int nbLignes = Console.WindowHeight;
+            int nbCouleurs = Enum.GetValues(typeof(ConsoleColor)).Length;
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            /* Console.Write("blanc sur noir");
+
+             Console.BackgroundColor = ConsoleColor.Red;
+             Console.ForegroundColor = ConsoleColor.Yellow;
+
+             Console.Write("jaune sur rouge");*/
+
+            
+                Console.SetCursorPosition(0, 0);
+                for (int i = 0; i < nbLignes; i++)
+                {
+                    Console.BackgroundColor = (ConsoleColor)(i % nbCouleurs);
+                    for (int j = 0; j < nbCol; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.SetCursorPosition(0, i);
+                    //Thread.Sleep(5);
+                }
+
+                for (int i = 0; i < nbCol; i++)
+                {
+                    Console.BackgroundColor = (ConsoleColor)(i % nbCouleurs);
+                    for (int j = 0; j < nbLignes; j++)
+                    {
+                        Console.Write(" ");
+                        Console.SetCursorPosition(i, j);
+                    }
+                    //Thread.Sleep(5);
+                }
+
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            //Console.WriteLine("{0} car de large par {1} car de haut", MaxLargeur, MaxHauteur);
+
+
+            return 0;
+        }
+
+        public static int CielEtoile()
+        {
+            int nbCol = Console.WindowWidth;
+            int nbLignes = Console.WindowHeight;
+            int nbCouleurs = Enum.GetValues(typeof(ConsoleColor)).Length;
+
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+
+            Random alea = new();
+
+            while (true)
+            {
+                for (int i = 0; i < (nbCol * nbLignes); i++)
+                {
+                    int x = alea.Next(nbCol);
+                    int y = alea.Next(nbLignes);
+                    int back = alea.Next(nbCouleurs);
+                    while (back == 0)
+                        back = alea.Next(nbCouleurs);
+
+                    Console.SetCursorPosition(x, y);
+                    Console.BackgroundColor = (ConsoleColor)back;
+                    Console.Write(" ");
+                    Thread.Sleep(1);
+                }
+            }
+
+            return 0;
+
         }
     }
 }

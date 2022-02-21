@@ -12,6 +12,11 @@ namespace atelier2022
         static Menu MenuPrincipal = new Menu("Atelier 2C6 POO");
         static void Main(string[] args)
         {
+            initCouleurEcran();
+            Paquet paq = new();
+            MenuPrincipal.AjouterItem(new MenuItem("Poker", 'K', paq.Afficher));
+            MenuPrincipal.AjouterItem(new MenuItem("Ciel étoilé ", 'I', Exploration.CielEtoile));
+            MenuPrincipal.AjouterItem(new MenuItem("Couleur de la console", 'O', Exploration.ExploCouleur));
             MenuPrincipal.AjouterItem(new MenuItem("Explo Héritage", 'H', ExploHeritage.ExplorationHeritage));
             MenuPrincipal.AjouterItem(new MenuItem("Lecture de fichiers", 'L', ExploManipFichiers.ExploLectureFichier));
             MenuPrincipal.AjouterItem(new MenuItem("Ecriture de fichiers", 'E', ExploManipFichiers.ExploEcritureFichier));
@@ -25,6 +30,13 @@ namespace atelier2022
 
             MenuPrincipal.Afficher();
             MenuPrincipal.SaisirChoix();
+        }
+
+        static void initCouleurEcran()
+        {
+            Console.BackgroundColor = (ConsoleColor)0;
+            Console.ForegroundColor = (ConsoleColor)10;
+            Console.Clear();
         }
     }
 }
