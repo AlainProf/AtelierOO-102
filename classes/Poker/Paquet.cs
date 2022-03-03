@@ -57,6 +57,11 @@ namespace atelier2022.classes
 
         public Carte Distribuer()
         {
+            if (_curseur > 51)
+            {
+                Exception e = new Exception("Impossible de rejoindre la carte");
+                throw (e);
+            }
             return lesCartes[_curseur++];
         }
     }

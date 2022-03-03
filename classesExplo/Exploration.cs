@@ -1,4 +1,6 @@
-﻿using System;
+﻿using atelier2022.classes;
+using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
@@ -234,6 +236,48 @@ namespace atelier2022
 
             return 0;
 
+        }
+
+
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <returns></returns>
+       public static int ExploStackNQueue()
+        {
+            Stack<Carte> pioche = new Stack<Carte>();
+
+            pioche.Push(new Carte(10, 3));
+            pioche.Push(new Carte(9, 1));
+            pioche.Push(new Carte(3, 3));
+            pioche.Push(new Carte(0, 1));
+
+            while(pioche.Count > 0)
+            {
+                Carte tempo = pioche.Pop();
+                tempo.Afficher(0, 0);
+                Console.ReadLine();
+            }
+
+            Queue<Humain> ListeAttente = new();
+
+            ListeAttente.Enqueue(new Humain("William", new DateTime(2000, 1, 1)));
+            ListeAttente.Enqueue(new Humain("Julius", new DateTime(2002, 1, 1)));
+            ListeAttente.Enqueue(new Humain("Vincent", new DateTime(2004, 1, 1)));
+            ListeAttente.Enqueue(new Humain("Alain", new DateTime(1964, 1, 1)));
+
+
+            while (ListeAttente.Count > 0)
+            {
+                Humain tempo = ListeAttente.Dequeue();
+                tempo.Afficher();
+                Console.ReadLine();
+            }
+
+
+
+
+            return 0;
         }
     }
 }

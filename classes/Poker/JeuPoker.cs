@@ -12,15 +12,17 @@ namespace atelier2022.classes
         private static int _couleurTexte = 15; // Blanc
 
         public static readonly int NB_CARTES_PAR_MAIN = 5;
-        public static readonly int NB_JOUEURS = 4;
+        public readonly int NB_JOUEURS;
 
 
         private Paquet lePaquet = new Paquet();
 
-        private MainPoker[] MainsJoueurs = new MainPoker[NB_JOUEURS];
+        private MainPoker[] MainsJoueurs;
 
-        public JeuPoker()
+        public JeuPoker(int nbJ = 4)
         {
+            NB_JOUEURS = nbJ;
+            MainsJoueurs = new MainPoker[NB_JOUEURS];
             for (int i = 0; i < NB_JOUEURS; i++)
             {
                 MainsJoueurs[i] = new MainPoker();
@@ -36,7 +38,7 @@ namespace atelier2022.classes
             for (int i = 0; i < NB_JOUEURS * NB_CARTES_PAR_MAIN; i++)
             {
                 Carte c = lePaquet.Distribuer();
-                int indice = (int)(i / NB_CARTES_PAR_MAIN);
+                int indice = (int)(i / NB_JOUEURS);
                 MainsJoueurs[i % NB_JOUEURS].AjouterCarte(indice, c);
             }
 
