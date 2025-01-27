@@ -8,29 +8,153 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AtelierOO_102
 {
     internal class Financier
     {
+        Util u = new Util();
+
+        public void Exec()
+        {
+            bool rester = true;
+            while (rester)
+            {
+                u.Titre("Finacier 2025");
+                AfficherMenu();
+                ExecuterChoix(ref rester);
+            }
+
+        }
+
         //---------------------------------------------
         //
         //---------------------------------------------
-        public void Exec()
+        void ExecuterChoix(ref bool rester)
         {
-            Util.Titre("Financier H25!");
+            char choix = u.SaisirChar();
 
-            Console.Write("Montant de la dette:");
-            string detteStr = Console.ReadLine();
-            int dette = int.Parse(detteStr);
+            switch (choix)
+            {
+                case ('p'):
+                    CalculerRendement();
+                    u.Pause();
+                    break;
 
-            Console.Write("Taux intérêt:");
-            string tauxInteretAnnuelStr = Console.ReadLine();
-            double tauxInteretAnnuel = double.Parse(tauxInteretAnnuelStr);
+                case ('r'):
+                    CalculerPret();
+                    u.Pause();
+                    break;
+                case ('q'):
+                    rester = false;
+                    break;
+            }
+
+        }
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        void AfficherMenu()
+        {
+            Console.WriteLine(" P: Placement");
+            Console.WriteLine(" R: Rembourser prêt");
+            Console.WriteLine("\n Q: Quitter");
+            Console.Write("\n\nVotre choix:");
+        }
+
+
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void CalculerRendement()
+        {
+            u.Titre("Calcul de rendement");
+
+            Console.Write("Montant du placement:");
+            int placement = u.SaisirEntier();
+
+            Console.Write("Taux intérêt annuel:");
+            double tauxInteretAnnuel = u.SaisirReel();
+
+            Console.Write("Durée en années du placement:");
+            int duree = u.SaisirEntier();
+
+            Console.Write("Composition (A|M|Q):");
+            char compo = u.SaisirChar();
+            Console.WriteLine();    
 
             Console.Write("Affichage détaillé? (o/n):");
-            ConsoleKeyInfo cle = Console.ReadKey();
-            char infoDetail = cle.KeyChar;
+            char infoDetail = u.SaisirChar();
+            Console.WriteLine();
+
+            double intCum = 0;
+            double capitalCum = placement;
+
+
+            if (infoDetail == 'o')
+            {
+                Console.WriteLine(@"{0}{1}{2}", "an".PadLeft(6),
+                  "Capital".PadLeft(12),
+                  "Interet cour".PadLeft(12));
+            }
+
+            int iter = duree;
+            double tauxInteret = tauxInteretAnnuel;
+
+            switch(compo)
+            {
+                case 'm':
+                case 'M':
+                    iter = duree * 12;
+                    tauxInteret = (tauxInteret / 12);
+                    break;
+
+                case 'q':
+                case 'Q':
+                    iter = duree * 365;
+                    tauxInteret = (tauxInteret / 365);
+                    break;
+            }
+
+
+            for (int i = 0; i < iter; i++)
+            {
+                double interetPeriode = tauxInteret * capitalCum;
+                intCum += interetPeriode;
+                capitalCum += interetPeriode;
+
+                if (infoDetail == 'o')
+                {
+
+                    Console.WriteLine(@"{0}{1}{2}", i.ToString().PadLeft(6),
+                      (capitalCum - interetPeriode).ToString("N2").PadLeft(12),
+                      interetPeriode.ToString("N2").PadLeft(12));
+                }     
+            }
+            Console.WriteLine("\n_________________________________\n");
+            Console.WriteLine($"Un placement de {placement}$ rapportera {intCum.ToString("N2")}$ en {duree} ans (Capital final: {capitalCum.ToString("N2")} )");
+
+        }
+
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void CalculerPret()
+        {
+            u.Titre("Remboursement d'un prêt!");
+
+            Console.Write("Montant de la dette:");
+            int dette = u.SaisirEntier();
+
+            Console.Write("Taux intérêt:");
+            double tauxInteretAnnuel = u.SaisirReel();
+
+            Console.Write("Affichage détaillé? (o/n):");
+            char infoDetail = u.SaisirChar();
 
             double tauxIntMensuel = tauxInteretAnnuel / 12;
             double pourcentageMinDelaDette = 0.04;

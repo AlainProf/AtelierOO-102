@@ -17,14 +17,14 @@ namespace AtelierOO_102
         //---------------------------------------------
         //
         //---------------------------------------------
-        public static void Titre(string leTitre)
+        public void Titre(string leTitre)
         {
             ViderEcran();
-            for (int i = 0; i < leTitre.Length;i++)
+            for (int i = 0; i < leTitre.Length; i++)
             {
                 Console.Write("_");
             }
-            Console.WriteLine();    
+            Console.WriteLine();
             Console.WriteLine(leTitre);
             for (int i = 0; i < leTitre.Length; i++)
             {
@@ -36,7 +36,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         //
         //---------------------------------------------
-        public static void ViderEcran()
+        public void ViderEcran()
         {
             Console.Clear();
             Console.WriteLine("\x1b[3J");
@@ -45,12 +45,46 @@ namespace AtelierOO_102
         //---------------------------------------------
         //
         //---------------------------------------------
-        public static char SaisirChar()
+        public char SaisirChar()
         {
             ConsoleKeyInfo cle = Console.ReadKey();
             return cle.KeyChar;
         }
+
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public int SaisirEntier()
+        {
+            string? input = Console.ReadLine();
+            if (int.TryParse(input, out int res))
+            {
+                return res;
+            }
+            return 0;
+        }
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public  double SaisirReel()
+        {
+            string? input = Console.ReadLine();
+            if (double.TryParse(input, out double res))
+            {
+                return res;
+            }
+            return 0.0;
+        }
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void Pause()
+        {
+            Console.WriteLine("\n\tAppuyez sur une touche...");
+            Console.ReadKey();
+        }
+
     }
-
-
 }

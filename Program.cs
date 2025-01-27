@@ -7,23 +7,30 @@ namespace AtelierOO_102
 {
     internal class Program
     {
+
+        static Util u = new Util();
         //---------------------------------------------
         //
         //---------------------------------------------
         static void Main(string[] args)
         {
-            Util.Titre("Atelier en classe du groupe 2C6-102");
-            AfficherMenu();
-            ExecuterChoix();
+            bool rester = true;
+            while (rester)
+            {
+                u.Titre("Atelier en classe du groupe 2C6-102");
+                AfficherMenu();
+                ExecuterChoix(ref rester);
+            }
+            Console.WriteLine("\n\n :o( Au revoir ....");
         }
 
 
         //---------------------------------------------
         //
         //---------------------------------------------
-        static void ExecuterChoix()
+        static void ExecuterChoix(ref bool rester)
         {
-            char choix = Util.SaisirChar();
+            char choix = u.SaisirChar();
 
             switch(choix)
             {
@@ -33,9 +40,16 @@ namespace AtelierOO_102
 
                 case ('h'):
                     ExecHumanite();
+                    u.Pause();
                     break;
+
+                case ('t'):
+                    ExploTableau();
+                    u.Pause();
+                    break;
+
                 case ('q'):
-                    Console.WriteLine("Au revoir ... :o(");
+                    rester=false;
                     break;
             }
 
@@ -48,11 +62,22 @@ namespace AtelierOO_102
         {
             Console.WriteLine(" F: Financier");
             Console.WriteLine(" H: Humanité");
-            Console.Write("Votre choix:");
+            Console.WriteLine(" T: Tableaux en C#");
+            Console.WriteLine("\n Q: Quitter");
+            Console.Write("\n\nVotre choix:");
 
-            Console.WriteLine("\n\n__________\n Q: Quitter");
         }
 
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        static void ExploTableau()
+        {
+            Explo explo = new Explo();
+            explo.ExploTableau();
+
+        }
 
         //---------------------------------------------
         //
@@ -67,15 +92,15 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void ExecHumanite()
         {
-            Util.Titre("Jouer avec les humains");
+            u.Titre("Jouer avec les humains");
 
             Humain h = new Humain();
             h.Afficher();
 
-            Humain h1 = new Humain("Adam", "-6000", "M");
+            Humain h1 = new Humain("Laury-Anne", new DateTime(2006, 9,27), "F" );
             h1.Afficher();
 
-            Humain h2 = new Humain("Êve", "-5999", "F");
+            Humain h2 = new Humain("Alain", new DateTime(1964, 7, 23), "M");
             h2.Afficher();
         }
     }
