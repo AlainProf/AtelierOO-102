@@ -86,5 +86,13 @@ namespace AtelierOO_102
             Console.ReadKey();
         }
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void Sep(string msg="")
+        {
+            Console.WriteLine($"----------{msg}----------");
+        }
+
     }
 }

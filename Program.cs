@@ -48,6 +48,11 @@ namespace AtelierOO_102
                     u.Pause();
                     break;
 
+                case ('l'):
+                    ExploListe();
+                    u.Pause();
+                    break;
+
                 case ('q'):
                     rester=false;
                     break;
@@ -63,6 +68,7 @@ namespace AtelierOO_102
             Console.WriteLine(" F: Financier");
             Console.WriteLine(" H: Humanité");
             Console.WriteLine(" T: Tableaux en C#");
+            Console.WriteLine(" L: Listes en C#");
             Console.WriteLine("\n Q: Quitter");
             Console.Write("\n\nVotre choix:");
 
@@ -72,10 +78,19 @@ namespace AtelierOO_102
         //---------------------------------------------
         //
         //---------------------------------------------
+        static void ExploListe()
+        {
+            Explo explo = new Explo();
+            explo.ExploListeH();
+
+        }
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         static void ExploTableau()
         {
             Explo explo = new Explo();
-            explo.ExploTableau();
+            explo.ExploTableauH();
 
         }
 
