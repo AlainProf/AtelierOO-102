@@ -53,6 +53,12 @@ namespace AtelierOO_102
                     u.Pause();
                     break;
 
+                case ('i'):
+                    ExploFichiers exploF= new();
+                    exploF.Exec();
+                    u.Pause();
+                    break;
+
                 case ('q'):
                     rester=false;
                     break;
@@ -69,6 +75,7 @@ namespace AtelierOO_102
             Console.WriteLine(" H: Humanité");
             Console.WriteLine(" T: Tableaux en C#");
             Console.WriteLine(" L: Listes en C#");
+            Console.WriteLine(" I: Fichiers en C#");
             Console.WriteLine("\n Q: Quitter");
             Console.Write("\n\nVotre choix:");
 

@@ -1,5 +1,5 @@
 ﻿//---------------------------------------------
-//   Fichier : Financoer.cs
+//   Fichier : Financier.cs
 //   Créateur: Alain Martel
 //   Date    : 2025-01-24
 //---------------------------------------------
@@ -21,7 +21,7 @@ namespace AtelierOO_102
             bool rester = true;
             while (rester)
             {
-                u.Titre("Finacier 2025");
+                u.Titre("Financier 2025");
                 AfficherMenu();
                 ExecuterChoix(ref rester);
             }

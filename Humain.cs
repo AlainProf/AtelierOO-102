@@ -15,18 +15,50 @@ namespace AtelierOO_102
 {
     internal class Humain
     {
-        string _nom;
-        public DateTime _naissance;
-        string _genre;
+        //-------------- Méthode Old-Fashionned
+
+        /*private DateTime Naissance;
+        
+        public DateTime getNaissance()
+        {
+           return Naissance;
+        }
+        public void setNaissance(DateTime n)
+        {
+           Naissance = `n;
+        }*/
+        
+        ///------------------ Métohde Property
+        
+        /*private DateTime Naissance;
+        public DateTime Naissance 
+        { 
+            get 
+            { 
+                return Naissance; 
+            } 
+            set 
+            { 
+              Naissance = value
+            } 
+        }*/
+
+        // Méthode automatic preoperty
+        public DateTime Naissance { get; set; }
+
+        public string Genre { get; set; }
+        public string Nom { get; set; }
+        public Adresse Domicile { get; set; }   
 
         //---------------------------------------------
         //
         //---------------------------------------------
         public Humain()
         {
-            _nom = "inconnu";
-            _naissance = new DateTime(1,1,1);
-            _genre = "F";
+            Nom = "inconnu";
+            Naissance = new DateTime(1,1,1);
+            Genre = "F";
+            Domicile = new Adresse();   
         }
 
         //---------------------------------------------
@@ -34,27 +66,30 @@ namespace AtelierOO_102
         //---------------------------------------------
         public Humain(string n)
         {
-            _nom = n;
-            _naissance = DateTime.Now;
-            _genre = "F";
+            Nom = n;
+            Naissance = DateTime.Now;
+            Genre = "F";
+            Domicile = new Adresse();
         }
         //---------------------------------------------
         //
         //---------------------------------------------
         public Humain(string n, DateTime nais)
         {
-            _nom = n;
-            _naissance = nais;
-            _genre = "F";
+            Nom = n;
+            Naissance = nais;
+            Genre = "F";
+            Domicile = new Adresse();
         }
         //---------------------------------------------
         //
         //---------------------------------------------
         public Humain(string n, DateTime nais, string g)
         {
-            _nom = n;
-            _naissance = nais;
-            _genre = g;
+            Nom = n;
+            Naissance = nais;
+            Genre = g;
+            Domicile = new Adresse();
         }
 
         //---------------------------------------------
@@ -62,7 +97,8 @@ namespace AtelierOO_102
         //---------------------------------------------
         public void Afficher()
         {
-            Console.WriteLine($"{_nom}, {Age()} ans");
+            Console.WriteLine($"{Nom}, {Age()} ans");
+            Domicile.Afficher();
 
         }
 
@@ -72,7 +108,7 @@ namespace AtelierOO_102
         public long Age()
         {
             DateTime mtn = DateTime.Now;
-            long ndSec = (mtn.Ticks - _naissance.Ticks)/ (10000000);
+            long ndSec = (mtn.Ticks - Naissance.Ticks)/ (10000000);
             long an = ndSec/(long)(60*60*24*365.24);
             return an;
             
@@ -83,10 +119,10 @@ namespace AtelierOO_102
         //---------------------------------------------
         public static int ComparerLongeurNom(Humain a, Humain b)
         {
-            if (a._nom.Length > b._nom.Length)
+            if (a.Nom.Length > b.Nom.Length)
                 return 1;
 
-            if (a._nom.Length < b._nom.Length)
+            if (a.Nom.Length < b.Nom.Length)
                 return -1;
 
             return 0;
@@ -96,7 +132,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         public static int ComparerNom(Humain a, Humain b)
         {
-            return (a._nom.CompareTo(b._nom));
+            return (a.Nom.CompareTo(b.Nom));
         }
 
         public int ComparerAgeNoStat(Humain a, Humain b)

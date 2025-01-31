@@ -9,7 +9,7 @@ namespace AtelierOO_102
     internal class Explo
     {
         Util u = new Util();
-        const int TAILLE = 1000000;
+        const int TAILLE = 10;
         int[] tabEntiers = new int[TAILLE];
         Humain[] tabGr102 = new Humain[TAILLE];
         string[] tabNoms = new string[10] { "Zakary", "Ubert", "Loïc", "David", "Liam", "Maxim", "LauryAn", "Emy", "Léa", "Saad" };
@@ -32,21 +32,23 @@ namespace AtelierOO_102
             for (int i = 0; i < TAILLE; i++)
             {
                 Humain h = new Humain(tabNoms[i%10], new DateTime(r.Next(1964, 2008), r.Next(1, 13), r.Next(1, 29)));
+                Adresse dom = new("1234", "rue de la paix", "Rimouski");
+                h.Domicile = dom;
                 lstGr102.Add(h);
             }
 
             u.Sep($"Liste contient {lstGr102.Count}");
-            //AfficherListeH();
+            AfficherListeH();
             u.Pause();
 
             u.Sep("Liste triée selon age:");
             lstGr102.Sort(ComparerAgeNoStatLocal);
-            //AfficherListeH();
+            AfficherListeH();
             u.Pause();
 
             u.Sep("Liste inversée:");
             lstGr102.Reverse();
-            //AfficherListeH();
+            AfficherListeH();
             u.Pause();
         }
 
@@ -157,9 +159,9 @@ namespace AtelierOO_102
         //---------------------------------------------
         public int ComparerAgeNoStatLocal(Humain a, Humain b)
         {
-            if (a._naissance.Ticks > b._naissance.Ticks)
+            if (a.Naissance.Ticks > b.Naissance.Ticks)
                 return 1;
-            if (a._naissance.Ticks < b._naissance.Ticks)
+            if (a.Naissance.Ticks < b.Naissance.Ticks)
                 return -1;
             return 0;
 
