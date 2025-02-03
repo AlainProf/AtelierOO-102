@@ -83,7 +83,7 @@ namespace AtelierOO_102
         public void Pause()
         {
             Console.WriteLine("\n\tAppuyez sur une touche...");
-            Console.ReadKey();
+            Console.ReadKey(true);
         }
 
         //---------------------------------------------

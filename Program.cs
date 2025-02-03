@@ -34,7 +34,22 @@ namespace AtelierOO_102
 
             switch(choix)
             {
-                case ('f'): 
+                case ('c'):
+                    ExploEcran exploEcran = new();
+                    exploEcran.ExploCouleur();
+                    break;
+
+                case ('t'):
+                    TicTacToe ttt = new TicTacToe();
+                    ttt.Jouer();
+                    break;
+
+                case ('r'):
+                    Explo exp = new Explo();
+                    exp.ExploRefOut();
+                    break;
+
+                case ('f'):
                     ExecFinancier();
                     break;
 
@@ -43,7 +58,7 @@ namespace AtelierOO_102
                     u.Pause();
                     break;
 
-                case ('t'):
+                case ('a'):
                     ExploTableau();
                     u.Pause();
                     break;
@@ -71,9 +86,12 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine(" c: Couleur et Console");
+            Console.WriteLine(" t: TicTacToe");
+            Console.WriteLine(" R: ref et out ");
             Console.WriteLine(" F: Financier");
             Console.WriteLine(" H: Humanité");
-            Console.WriteLine(" T: Tableaux en C#");
+            Console.WriteLine(" a: Tableaux (array) en C#");
             Console.WriteLine(" L: Listes en C#");
             Console.WriteLine(" I: Fichiers en C#");
             Console.WriteLine("\n Q: Quitter");
