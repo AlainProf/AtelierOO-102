@@ -3,6 +3,8 @@
 //   Créateur: Alain Martel
 //   Date    : 2025-01-24
 //---------------------------------------------
+using AtelierOO_102.TP1;
+
 namespace AtelierOO_102
 {
     internal class Program
@@ -14,6 +16,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void Main(string[] args)
         {
+            u.SetNoirEttBlanc();
             bool rester = true;
             while (rester)
             {
@@ -34,9 +37,15 @@ namespace AtelierOO_102
 
             switch(choix)
             {
+                case ('p'):
+                    Puissance4 p4 = new();
+                    p4.Jouer();
+                    break;
+
                 case ('c'):
                     ExploEcran exploEcran = new();
-                    exploEcran.ExploCouleur();
+                    //exploEcran.ExploCouleur();
+                    exploEcran.ExploEpilepsis();
                     break;
 
                 case ('t'):
@@ -86,6 +95,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine(" P: Puissance 4");
             Console.WriteLine(" c: Couleur et Console");
             Console.WriteLine(" t: TicTacToe");
             Console.WriteLine(" R: ref et out ");

@@ -14,6 +14,8 @@ namespace AtelierOO_102
 {
     internal class Util
     {
+
+        public Random rdm = new();
         //---------------------------------------------
         //
         //---------------------------------------------
@@ -94,5 +96,11 @@ namespace AtelierOO_102
             Console.WriteLine($"----------{msg}----------");
         }
 
+        public void SetNoirEttBlanc()
+        {
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
