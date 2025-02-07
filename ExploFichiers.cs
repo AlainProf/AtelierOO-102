@@ -1,4 +1,10 @@
-﻿using System;
+﻿//---------------------------------------------
+//   Fichier : 
+//   Créateur: Alain Martel
+//   Date    : 
+//---------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +14,38 @@ namespace AtelierOO_102
 {
     internal class ExploFichiers
     {
-        Util u=new Util();  
+        Util _u=new Util();
+        List<Humain> _electeurs = new List<Humain>();
+        Parseur prs = new Parseur();
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void ExecAleatoire(int nbElecteurs = 100)
+        {
+            _u.Titre($"Génération de {nbElecteurs} d'électeurs");
+            for(int i = 0; i < nbElecteurs; i++)
+            {
+                Humain elAlea = Humain.GenererAlea();
+                _electeurs.Add(elAlea);
+            }
+
+            EcrireElecteursTries();
+            _u.Pause();
+        }
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public void Exec()
         {
-            u.Titre("Exploration des fichiers en C#");
+            _u.Titre("Exploration des fichiers en C#");
             ParcourirFichierEnLecture();
 
-            u.Pause();
+            _u.Pause();
         }
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         private void ParcourirFichierEnLecture()
         {
             string FICHIER_POPULATION = "d:\\alino\\popu.txt";
@@ -26,7 +55,7 @@ namespace AtelierOO_102
                 StreamReader reader = new StreamReader(FICHIER_POPULATION);
                 string ligneCourante;
                 int numLigne = 0;   
-                List<Humain> electeurs = new List<Humain>();
+               
 
                 while(reader.Peek() > -1)
                 {
@@ -34,18 +63,20 @@ namespace AtelierOO_102
                     ligneCourante = reader.ReadLine();  
                     //Console.WriteLine($"{numLigne}:{ligneCourante}");
 
-                    if (ParsingHumain(ligneCourante, out Humain h))
+                    if (prs.ParsingHumain(ligneCourante, out Humain h, out string msgErr))
                     {
                         //Console.Write($"{numLigne}:\t");
-                        electeurs.Add(h);    
+                        _electeurs.Add(h);    
                     }
                     else
                     {
-                        Console.WriteLine($"Erreur fichier corrompu à la ligne {numLigne}");
+                        Console.WriteLine($"Erreur à la ligne {numLigne}, {msgErr}");
                     }
                 }
-                Console.WriteLine($"Chargement de {electeurs.Count} électeurs");
+                Console.WriteLine($"Chargement de {_electeurs.Count} électeurs");
                 reader.Close();
+
+                EcrireElecteursTries();
             }
             else
             {
@@ -53,43 +84,47 @@ namespace AtelierOO_102
             }
         }
 
-        private bool ParsingHumain(string infoBrute, out Humain h)
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        private void EcrireElecteursTries()
         {
-            int nbChamps = CompterNbChamps(infoBrute);
-            h = new Humain();
-            if (nbChamps == 8)
+            StringBuilder sb; ;   
+            _electeurs.Sort(Humain.ComparerNom);
+
+            _u.Sep($"Nous avons charger {_electeurs.Count} électeurs");
+
+            // Le deuxième param: si TRUE == mode append; si false (ou absent) le fichier de destination est flushé avant l'écriture
+            StreamWriter sw = new StreamWriter("d:\\alino\\popuTriA.txt");
+            foreach(Humain h in _electeurs)
             {
-                //Console.WriteLine("Bingo");
-                string[] tabInfo = infoBrute.Split(';');
+                sb = new();
+                sb.Append(h.Nom);
+                sb.Append(";");
+                sb.Append(h.Naissance.Year);
+                sb.Append(";");
+                sb.Append(h.Naissance.Month);
+                sb.Append(";");
+                sb.Append(h.Naissance.Day);
+                sb.Append(";");
+                sb.Append(h.Genre);
+                sb.Append(";");
+                sb.Append(h.Domicile.NumCivique);
+                sb.Append(";");
+                sb.Append(h.Domicile.Rue);
+                sb.Append(";");
+                sb.Append(h.Domicile.Ville);
 
-                h = new Humain(tabInfo[0],
-                               new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
-                               tabInfo[4]);
-                h.Domicile = new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]);
+                Console.WriteLine(sb.ToString());
+                _u.Pause();
 
-                return true;
+                sw.WriteLine(sb.ToString());
+
             }
-            else
-            {
-                Console.WriteLine($"Erreur ({nbChamps}) est un nombre de champs incorrect");
-                return false;   
-            }
-        }
+            sw.Close();
 
-        private int CompterNbChamps(string info)
-        {
-            if (info.Length == 0)
-                return 0;
 
-            int nbChamps = 1;
-            foreach (char c in info)
-            {
-                if (c == ';')
-                {
-                    nbChamps++;
-                }
-            }
-            return nbChamps;
         }
     }
 }

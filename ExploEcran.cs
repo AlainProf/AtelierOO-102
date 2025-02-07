@@ -1,4 +1,10 @@
-﻿using System;
+﻿//---------------------------------------------
+//   Fichier : 
+//   Créateur: Alain Martel
+//   Date    : 
+//---------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +15,11 @@ namespace AtelierOO_102
     internal class ExploEcran
     {
         Util u = new();
-        
-        
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+
         public void ExploEpilepsis()
         {
             int limiteX = Console.WindowWidth-1;
@@ -67,6 +76,9 @@ namespace AtelierOO_102
         }
 
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public void ExploCouleur()
         {
             u.Titre("Les couleurs de la console en C#");

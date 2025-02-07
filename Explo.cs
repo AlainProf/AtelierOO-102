@@ -1,4 +1,9 @@
-﻿using System;
+﻿//---------------------------------------------
+//   Fichier : 
+//   Créateur: Alain Martel
+//   Date    : 
+//---------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

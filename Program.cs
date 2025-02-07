@@ -79,6 +79,7 @@ namespace AtelierOO_102
 
                 case ('i'):
                     ExploFichiers exploF= new();
+                    //exploF.ExecAleatoire();
                     exploF.Exec();
                     u.Pause();
                     break;

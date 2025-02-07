@@ -16,6 +16,11 @@ namespace AtelierOO_102
     {
 
         public Random rdm = new();
+
+        public readonly string[] TabNoms = new string[10] { "Xavier", "Louam", "Saad", "Léa", "Emy", "Laury-Anne", "Maxim", "Liam", "Ubert", "David" };
+        public readonly string[] TabRues = new string[10] { "1ier avenue", "2iieme rue", "115 aap8", "boul Labelle", "Aut 15 nord", "de l'église", "Notee-Dame", "sans issue", "cul de sac", "Fournier" };
+        public readonly string[] TabVilles = new string[10] { "St-Jérôme", "Miabel", "Blainville", "Ste-Thérèse", "Rosemère", "Laval", "Montréal", "Longueuil", "St-Bruno", "Akwasasne" };
+
         //---------------------------------------------
         //
         //---------------------------------------------

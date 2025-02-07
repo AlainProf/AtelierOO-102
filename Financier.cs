@@ -16,6 +16,9 @@ namespace AtelierOO_102
     {
         Util u = new Util();
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public void Exec()
         {
             bool rester = true;

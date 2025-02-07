@@ -91,6 +91,16 @@ namespace AtelierOO_102
             Genre = g;
             Domicile = new Adresse();
         }
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public Humain(string n, DateTime nais, string g, Adresse dom)
+        {
+            Nom = n;
+            Naissance = nais;
+            Genre = g;
+            Domicile = dom;
+        }
 
         //---------------------------------------------
         //
@@ -141,8 +151,33 @@ namespace AtelierOO_102
                 return 1;
             if (a.Age() < b.Age())
                 return -1;
-            return 0;   
+            return 0;
 
+        }
+        public static int ComparerAge(Humain a, Humain b)
+        {
+            if (a.Age() > b.Age())
+                return 1;
+            if (a.Age() < b.Age())
+                return -1;
+            return 0;
+        }
+
+        public static Humain GenererAlea()
+        {
+            Util u = new();
+            string nom = u.TabNoms[u.rdm.Next(0, 10)];
+            DateTime nais = new DateTime(u.rdm.Next(1926, 2008), u.rdm.Next(1, 13), u.rdm.Next(1, 29));
+            Adresse dom = new Adresse( (u.rdm.Next(100, 10000)).ToString(), u.TabRues[u.rdm.Next(0, 10)], u.TabVilles[u.rdm.Next(0, 10)] );
+
+            string sexe = "M";
+            int g = u.rdm.Next(0, 2);
+
+            if (g == 1)
+                sexe = "F";
+              
+
+            return (new Humain(nom, nais, sexe, dom));
         }
 
     }

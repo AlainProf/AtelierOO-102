@@ -1,4 +1,10 @@
-﻿using System;
+﻿//---------------------------------------------
+//   Fichier : 
+//   Créateur: Alain Martel
+//   Date    : 
+//---------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +18,18 @@ namespace AtelierOO_102
         public string Rue { get; set; }
         public string Ville { get; set; }
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public Adresse()
         {
             NumCivique = "0";
             Rue = "rue sans nom";
             Ville = "Bidonville";
         }
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public Adresse(string nc, string r, string v)
         {
             NumCivique = nc;
@@ -25,6 +37,9 @@ namespace AtelierOO_102
             Ville = v;
         }
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public void Afficher()
         {
             Console.WriteLine($"{NumCivique} {Rue}, {Ville}");

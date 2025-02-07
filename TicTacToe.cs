@@ -1,4 +1,9 @@
-﻿using System;
+﻿//---------------------------------------------
+//   Fichier : 
+//   Créateur: Alain Martel
+//   Date    : 
+//---------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +17,9 @@ namespace AtelierOO_102
         char[] _cases = new char[] { ' ',' ',' ',' ',' ',' ',' ',' ', ' ' }; 
         char joueurCourant = 'X';
         bool partieEnCours = true;
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public void Jouer()
         {
             while (partieEnCours)
@@ -29,6 +37,9 @@ namespace AtelierOO_102
         }
 
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         private bool CoupGagnant()
         {
 
@@ -100,6 +111,9 @@ namespace AtelierOO_102
         }
 
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         private void prochainCoup()
         {
             Console.Write("\n\n Au " + joueurCourant + " de jouer\nQuelle case? (0,8)");
@@ -122,6 +136,9 @@ namespace AtelierOO_102
             }
         }
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         private bool CoupLegal(char coup)
         {
             if (coup != '0' &&
@@ -145,6 +162,9 @@ namespace AtelierOO_102
             return true;    
         }
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         private void AfficherGrille()
         {
             u.Titre("Tic Tac Toe");
