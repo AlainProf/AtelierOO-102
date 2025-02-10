@@ -3,6 +3,7 @@
 //   Créateur: Alain Martel
 //   Date    : 
 //---------------------------------------------
+using AtelierOO_102.Poker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -231,10 +232,20 @@ namespace AtelierOO_102
         //---------------------------------------------
         //
         //---------------------------------------------
+        double divParZ(int den)
+        {
+            int i = 1000;
+            return i / den;
+        }
+        //---------------------------------------------
+        //
+        //---------------------------------------------
         public void ExploTableau()
         {
 
             u.Titre("Les tableaux en C#");
+
+            divParZ(0);
 
 
             for (int i = 0; i < tabEntiers.Length; i++)
@@ -274,5 +285,88 @@ namespace AtelierOO_102
                 Console.WriteLine($"Iten {i}: {tabEntiers[i]}");
             }
         }
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void ExecEnum()
+        {
+            u.Titre("Exploration des enum");
+
+            int j = 2;
+            JourSemaine aujh ;
+
+            bool indValide = Enum.IsDefined(typeof(JourSemaine), j);
+            if (indValide)
+            {
+                aujh = (JourSemaine)j;
+            }
+            else
+            {
+                Console.WriteLine($"{j} n'est pas un indice valide de mon enum");
+                aujh = JourSemaine.Vendredi;
+
+            }
+
+            JourSemaine dem = (JourSemaine)(++j);
+
+            u.Sep($"Nous somme {aujh}, demain sera {dem}");
+
+
+            JourSemaine jourX = JourSemaine.Dimanche;
+            int jx = (int)jourX;
+
+            u.Sep($"Dimanche est le {jx}ième jour de l'enum");
+
+            u.Pause();
+
+            Carte c1 = new Carte();
+            c1.Afficher();
+
+            Carte c2 = new Carte(u.rdm.Next(0, 4), u.rdm.Next(0, 13));
+            c2.Afficher();
+
+            u.Pause();
+
+            Paquet paq = new();
+            paq.Afficher();
+            u.Pause();
+
+            paq = new(true);
+            paq.Afficher();
+            u.Pause();
+
+        }
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        public void ExecExceptions()
+        {
+            string nomFichier = "d:\\alino\\popu.txt";
+            try
+            {
+                u.Titre("Les exceptions en C#");
+
+                StreamReader reader = new StreamReader(nomFichier);
+                u.Sep("Fichier ouvert");
+                u.Pause();  
+            }
+            catch(Exception ex)
+            {
+                // Console.WriteLine($"Exception: incapable d'ouvrir le ficher {nomFichier}");
+                throw (new Exception($"incapable d'ouvrir le ficher {nomFichier}"));
+            }
+        }
+
+        public void ExecHeritage()
+        {
+            u.Titre("Héritage en C#");
+            Etudiant e = new();
+            e.Afficher();
+            u.Pause();
+
+        }
     }
 }
+

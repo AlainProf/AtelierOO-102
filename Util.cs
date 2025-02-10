@@ -12,6 +12,17 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_102
 {
+
+    enum JourSemaine
+    {
+        Lundi = 1,
+        Mardi =2,
+        Mercredi=3,
+        Jeudi=4,
+        Vendredi=5,
+        Samedi=6,
+        Dimanche=7,
+    }
     internal class Util
     {
 

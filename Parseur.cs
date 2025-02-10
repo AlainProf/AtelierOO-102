@@ -11,6 +11,14 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_102
 {
+    enum ErreursAtelier
+    {
+        NomTropLong,
+        NomTropCourt,
+        ElecteurMineur,
+        ElecteurSenile
+    }
+
     internal class Parseur
     {
         //---------------------------------------------
@@ -56,24 +64,24 @@ namespace AtelierOO_102
             contexte = "";
             if (tabInfo[0].Length > 50)
             {
-                contexte = $"nom trop long ({tabInfo[0].Length}) max est de 50";
+                contexte = ErreursAtelier.NomTropLong.ToString();
                 return false;
             }
             if (tabInfo[0].Length < 2)
             {
-                contexte = $"nom trop court ({tabInfo[0].Length}) min est de 2";
+                contexte = ErreursAtelier.NomTropCourt.ToString();
                 return false;
             }
             if (int.TryParse(tabInfo[1], out int an) )
             {
                 if (an > 2007)
                 {
-                    contexte = $"electeur mineurs";
+                    contexte = ErreursAtelier.ElecteurMineur.ToString();
                     return false;
                 }
                 if (an < 1926)
                 {
-                    contexte = $"electeur sénélies";
+                    contexte = ErreursAtelier.ElecteurSenile.ToString();
                     return false;
                 }
             }

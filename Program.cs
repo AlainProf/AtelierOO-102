@@ -4,6 +4,7 @@
 //   Date    : 2025-01-24
 //---------------------------------------------
 using AtelierOO_102.TP1;
+using System.Diagnostics.Metrics;
 
 namespace AtelierOO_102
 {
@@ -16,15 +17,55 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void Main(string[] args)
         {
-            u.SetNoirEttBlanc();
             bool rester = true;
             while (rester)
             {
-                u.Titre("Atelier en classe du groupe 2C6-102");
-                AfficherMenu();
-                ExecuterChoix(ref rester);
+                try
+                {
+                    u.SetNoirEttBlanc();
+                    u.Titre("Atelier en classe du groupe 2C6-102");
+                    AfficherMenu();
+                    ExecuterChoix(ref rester);
+                }
+
+                 catch (Exception ex)
+                {
+                    Console.WriteLine("Exception rencontrée : " + ex.Message);
+                    Console.Write("Voulez vous poursuivre? (o/n)");   
+                    char dec = u.SaisirChar();  
+                    if (dec != 'o' && dec != 'O')
+                    {
+                        rester = false;
+                    }
+                 }
+                finally
+                {
+                   Console.WriteLine("\n\n :o( Au revoir ....");
+                }
             }
-            Console.WriteLine("\n\n :o( Au revoir ....");
+        }
+
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        static void AfficherMenu()
+        {
+            Console.WriteLine(" G: Héritage");
+            Console.WriteLine(" X: Exceptions en C#");
+            Console.WriteLine(" E: Énumération (enum) en C#");
+            Console.WriteLine(" P: Puissance 4");
+            Console.WriteLine(" c: Couleur et Console");
+            Console.WriteLine(" t: TicTacToe");
+            Console.WriteLine(" R: ref et out ");
+            Console.WriteLine(" F: Financier");
+            Console.WriteLine(" H: Humanité");
+            Console.WriteLine(" a: Tableaux (array) en C#");
+            Console.WriteLine(" L: Listes en C#");
+            Console.WriteLine(" I: Fichiers en C#");
+            Console.WriteLine("\n Q: Quitter");
+            Console.Write("\n\nVotre choix:");
+
         }
 
 
@@ -34,9 +75,20 @@ namespace AtelierOO_102
         static void ExecuterChoix(ref bool rester)
         {
             char choix = u.SaisirChar();
+            Explo exp = new Explo();
 
-            switch(choix)
+            switch (choix)
             {
+                case ('g'):
+                    exp.ExecHeritage();
+                    break;
+                case ('x'):
+                    exp.ExecExceptions();
+                    break;
+                case ('e'):
+                    exp.ExecEnum();
+                    break;
+
                 case ('p'):
                     Puissance4 p4 = new();
                     p4.Jouer();
@@ -54,7 +106,6 @@ namespace AtelierOO_102
                     break;
 
                 case ('r'):
-                    Explo exp = new Explo();
                     exp.ExploRefOut();
                     break;
 
@@ -91,24 +142,6 @@ namespace AtelierOO_102
 
         }
 
-        //---------------------------------------------
-        //
-        //---------------------------------------------
-        static void AfficherMenu()
-        {
-            Console.WriteLine(" P: Puissance 4");
-            Console.WriteLine(" c: Couleur et Console");
-            Console.WriteLine(" t: TicTacToe");
-            Console.WriteLine(" R: ref et out ");
-            Console.WriteLine(" F: Financier");
-            Console.WriteLine(" H: Humanité");
-            Console.WriteLine(" a: Tableaux (array) en C#");
-            Console.WriteLine(" L: Listes en C#");
-            Console.WriteLine(" I: Fichiers en C#");
-            Console.WriteLine("\n Q: Quitter");
-            Console.Write("\n\nVotre choix:");
-
-        }
 
 
         //---------------------------------------------
@@ -126,7 +159,7 @@ namespace AtelierOO_102
         static void ExploTableau()
         {
             Explo explo = new Explo();
-            explo.ExploTableauH();
+            explo.ExploTableau();
 
         }
 
