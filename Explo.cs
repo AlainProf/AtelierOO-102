@@ -362,8 +362,19 @@ namespace AtelierOO_102
         public void ExecHeritage()
         {
             u.Titre("Héritage en C#");
-            Etudiant e = new();
-            e.Afficher();
+           // Etudiant e = new();
+           // e.Afficher();
+
+            //e = new("1234567", "tech info", 0.95);
+            //e.Afficher();
+
+            //e = new("Xavier", new DateTime(2007,02,28), "M", "1234567", "tech info", 0.95);
+            //e.Afficher();
+
+            Stagiaire stag = new("Xavier", new DateTime(2007, 02, 28), "M", "1234567", "tech info", 0.95, "Hydro-Québec", 22.34);
+            stag.Afficher();
+
+
             u.Pause();
 
         }

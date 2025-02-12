@@ -74,9 +74,10 @@ namespace AtelierOO_102
                     }
                 }
                 Console.WriteLine($"Chargement de {_electeurs.Count} électeurs");
+                _u.Pause();
                 reader.Close();
 
-                EcrireElecteursTries();
+                //EcrireElecteursTries();
             }
             else
             {

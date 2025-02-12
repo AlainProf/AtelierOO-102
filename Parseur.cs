@@ -29,7 +29,7 @@ namespace AtelierOO_102
             int nbChamps = CompterNbChamps(infoBrute);
             h = new Humain();
             msgErr = "";
-            if (nbChamps == 8)
+            if (nbChamps == 5)
             {
                 //Console.WriteLine("Bingo");
                 string[] tabInfo = infoBrute.Split(';');
@@ -40,7 +40,7 @@ namespace AtelierOO_102
                     h = new Humain(tabInfo[0],
                                    new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
                                    tabInfo[4]);
-                    h.Domicile = new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]);
+                    //h.Domicile = new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]);
                     return true;
                 }
                 else

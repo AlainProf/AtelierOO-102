@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AtelierOO-102": {
+      "commandName": "Project",
+      "commandLineArgs": "x"
+    }
+  }
+}

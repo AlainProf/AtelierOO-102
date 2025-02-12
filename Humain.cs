@@ -48,13 +48,16 @@ namespace AtelierOO_102
 
         public string Genre { get; set; }
         public string Nom { get; set; }
-        public Adresse Domicile { get; set; }   
+        public Adresse Domicile { get; set; }
+
+        Util _u = new();
 
         //---------------------------------------------
         //
         //---------------------------------------------
         public Humain()
         {
+            //_u.Sep("Cons Humain par défaut");
             Nom = "inconnu";
             Naissance = new DateTime(1,1,1);
             Genre = "F";
@@ -66,6 +69,8 @@ namespace AtelierOO_102
         //---------------------------------------------
         public Humain(string n)
         {
+            _u.Sep("Cons Humain 1 param");
+
             Nom = n;
             Naissance = DateTime.Now;
             Genre = "F";
@@ -86,6 +91,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         public Humain(string n, DateTime nais, string g)
         {
+            //_u.Sep("Cons Humain 3 param");
             Nom = n;
             Naissance = nais;
             Genre = g;

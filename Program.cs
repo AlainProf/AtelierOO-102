@@ -11,12 +11,18 @@ namespace AtelierOO_102
     internal class Program
     {
 
+
+        const bool debogueCONST = true;
+    
+
         static Util u = new Util();
         //---------------------------------------------
         //
         //---------------------------------------------
         static void Main(string[] args)
         {
+            AfficherParam(args);
+
             bool rester = true;
             while (rester)
             {
@@ -30,7 +36,7 @@ namespace AtelierOO_102
 
                  catch (Exception ex)
                 {
-                    Console.WriteLine("Exception rencontrée : " + ex.Message);
+                    Console.WriteLine("\n\nATTENTION!!! \tException rencontrée : " + ex.Message);
                     Console.Write("Voulez vous poursuivre? (o/n)");   
                     char dec = u.SaisirChar();  
                     if (dec != 'o' && dec != 'O')
@@ -46,6 +52,31 @@ namespace AtelierOO_102
         }
 
 
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        static void AfficherParam(string[] tabP)
+        {
+            const bool CONSTBIDON = true;
+            if (tabP.Length == 1)
+            {
+                u = new Util(false);
+            }
+
+            if (tabP.Length == 0)
+            {
+                u.Sep("Aucun paramètres d'Exec");
+            }
+            else
+            {
+                u.Sep($"{tabP.Length} params:");
+                foreach (string p in tabP)
+                {
+                    u.Sep(p);
+                }
+            }
+            u.Pause();
+        }
         //---------------------------------------------
         //
         //---------------------------------------------

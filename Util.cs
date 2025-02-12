@@ -25,6 +25,7 @@ namespace AtelierOO_102
     }
     internal class Util
     {
+        bool _modeDebogue = true;
 
         public Random rdm = new();
 
@@ -32,6 +33,17 @@ namespace AtelierOO_102
         public readonly string[] TabRues = new string[10] { "1ier avenue", "2iieme rue", "115 aap8", "boul Labelle", "Aut 15 nord", "de l'église", "Notee-Dame", "sans issue", "cul de sac", "Fournier" };
         public readonly string[] TabVilles = new string[10] { "St-Jérôme", "Miabel", "Blainville", "Ste-Thérèse", "Rosemère", "Laval", "Montréal", "Longueuil", "St-Bruno", "Akwasasne" };
 
+        static readonly bool debogueRO = false;
+        public Util(bool pd= true)
+        {
+            
+        }
+
+        public void SetModeDebogue(bool mode)
+        {
+           // debogueRO = mode;
+            _modeDebogue = mode;
+        }
         //---------------------------------------------
         //
         //---------------------------------------------
@@ -100,7 +112,10 @@ namespace AtelierOO_102
         //---------------------------------------------
         public void Pause()
         {
-            Console.WriteLine("\n\tAppuyez sur une touche...");
+            if (_modeDebogue)
+                Console.WriteLine("\n\tAppuyez sur une touche...");
+            else
+                Console.WriteLine("--");  
             Console.ReadKey(true);
         }
 
@@ -109,7 +124,10 @@ namespace AtelierOO_102
         //---------------------------------------------
         public void Sep(string msg="")
         {
-            Console.WriteLine($"----------{msg}----------");
+            if (_modeDebogue)
+                Console.WriteLine($"----------{msg}----------");
+            else
+                Console.WriteLine($"{msg}");
         }
 
         public void SetNoirEttBlanc()
