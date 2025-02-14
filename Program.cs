@@ -3,6 +3,7 @@
 //   Créateur: Alain Martel
 //   Date    : 2025-01-24
 //---------------------------------------------
+using AtelierOO_102.Internationnal;
 using AtelierOO_102.TP1;
 using System.Diagnostics.Metrics;
 
@@ -10,18 +11,14 @@ namespace AtelierOO_102
 {
     internal class Program
     {
-
-
         const bool debogueCONST = true;
-    
-
         static Util u = new Util();
         //---------------------------------------------
         //
         //---------------------------------------------
         static void Main(string[] args)
         {
-            AfficherParam(args);
+            //AfficherParam(args);
 
             bool rester = true;
             while (rester)
@@ -82,6 +79,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void AfficherMenu()
         {
+            Console.WriteLine(" Y: International");
             Console.WriteLine(" G: Héritage");
             Console.WriteLine(" X: Exceptions en C#");
             Console.WriteLine(" E: Énumération (enum) en C#");
@@ -110,6 +108,11 @@ namespace AtelierOO_102
 
             switch (choix)
             {
+                case ('y'):
+                    Cooperation inter = new();
+                    inter.Exec();
+                    break;
+
                 case ('g'):
                     exp.ExecHeritage();
                     break;
