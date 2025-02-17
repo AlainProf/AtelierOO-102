@@ -79,19 +79,20 @@ namespace AtelierOO_102
         //---------------------------------------------
         static void AfficherMenu()
         {
-            Console.WriteLine(" Y: International");
-            Console.WriteLine(" G: Héritage");
-            Console.WriteLine(" X: Exceptions en C#");
+            Console.WriteLine(" A: Interface");
+            Console.WriteLine(" B: International");
+            Console.WriteLine(" C: Héritage");
+            Console.WriteLine(" D: Exceptions en C#");
             Console.WriteLine(" E: Énumération (enum) en C#");
-            Console.WriteLine(" P: Puissance 4");
-            Console.WriteLine(" c: Couleur et Console");
-            Console.WriteLine(" t: TicTacToe");
-            Console.WriteLine(" R: ref et out ");
-            Console.WriteLine(" F: Financier");
-            Console.WriteLine(" H: Humanité");
-            Console.WriteLine(" a: Tableaux (array) en C#");
+            Console.WriteLine(" F: Couleur et Console");
+            Console.WriteLine(" G: TicTacToe");
+            Console.WriteLine(" H: ref et out ");
+            Console.WriteLine(" I: Financier");
+            Console.WriteLine(" J: Humanité");
+            Console.WriteLine(" K: Tableaux (array) en C#");
             Console.WriteLine(" L: Listes en C#");
-            Console.WriteLine(" I: Fichiers en C#");
+            Console.WriteLine(" M: Fichiers en C#");
+            Console.WriteLine(" N: Puissance 4");
             Console.WriteLine("\n Q: Quitter");
             Console.Write("\n\nVotre choix:");
 
@@ -108,51 +109,51 @@ namespace AtelierOO_102
 
             switch (choix)
             {
-                case ('y'):
+                case ('a'):
+                    exp.ExploInterface();
+                    break;
+
+                case ('b'):
                     Cooperation inter = new();
                     inter.Exec();
                     break;
 
-                case ('g'):
+                case ('c'):
                     exp.ExecHeritage();
                     break;
-                case ('x'):
+                case ('d'):
                     exp.ExecExceptions();
                     break;
                 case ('e'):
                     exp.ExecEnum();
                     break;
 
-                case ('p'):
-                    Puissance4 p4 = new();
-                    p4.Jouer();
-                    break;
 
-                case ('c'):
+                case ('f'):
                     ExploEcran exploEcran = new();
                     //exploEcran.ExploCouleur();
                     exploEcran.ExploEpilepsis();
                     break;
 
-                case ('t'):
+                case ('g'):
                     TicTacToe ttt = new TicTacToe();
                     ttt.Jouer();
                     break;
 
-                case ('r'):
+                case ('h'):
                     exp.ExploRefOut();
                     break;
 
-                case ('f'):
+                case ('i'):
                     ExecFinancier();
                     break;
 
-                case ('h'):
+                case ('j'):
                     ExecHumanite();
                     u.Pause();
                     break;
 
-                case ('a'):
+                case ('k'):
                     ExploTableau();
                     u.Pause();
                     break;
@@ -162,11 +163,16 @@ namespace AtelierOO_102
                     u.Pause();
                     break;
 
-                case ('i'):
+                case ('m'):
                     ExploFichiers exploF= new();
                     //exploF.ExecAleatoire();
                     exploF.Exec();
                     u.Pause();
+                    break;
+
+                case ('n'):
+                    Puissance4 p4 = new();
+                    p4.Jouer();
                     break;
 
                 case ('q'):

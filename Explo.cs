@@ -378,6 +378,40 @@ namespace AtelierOO_102
             u.Pause();
 
         }
+
+        public void ExploInterface()
+        {
+            u.Titre("Interface");
+
+            Humain adam = new Humain("Adam", new DateTime(1000, 1,1), "M", new Adresse("XYX", "zapatha", "Paradis"));
+            Humain eve  = new Humain("Eve", new DateTime(1000, 3, 1), "F", new Adresse("ABC", "zapatha", "Paradis"));
+            Humain h3 = new Humain("Cain", new DateTime(1001, 1, 1), "M", new Adresse("F", "zapatha", "Paradis")); 
+            Humain h4 = new Humain("Abel", new DateTime(1002, 1, 1), "X", new Adresse("D", "zapatha", "Paradis")); 
+
+            List<Humain> lesPremiers = new List<Humain>();
+
+            lesPremiers.Add(adam);
+            lesPremiers.Add(eve);
+            lesPremiers.Add(h3);
+            lesPremiers.Add(h4);
+
+
+            u.Sep("Les 4 premiers humains (selon bible)");
+            foreach(Humain h in lesPremiers)
+            {
+                h.Afficher();
+            }
+            
+            lesPremiers.Sort();
+
+            u.Sep("Les 4 premiers humains triés");
+            foreach (Humain h in lesPremiers)
+            {
+                h.Afficher();
+            }
+
+            u.Pause();
+        }
     }
 }
 

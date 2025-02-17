@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AtelierOO_102
 {
-    internal class Humain
+    internal class Humain : IComparable<Humain> 
     {
         //-------------- Méthode Old-Fashionned
 
@@ -50,6 +50,22 @@ namespace AtelierOO_102
         public string Nom { get; set; }
         public Adresse Domicile { get; set; }
 
+        public int CompareTo(Humain lautre)
+        {
+            if (this.Domicile.Ville.CompareTo(lautre.Domicile.Ville) == 1)
+                return 1;
+            if (this.Domicile.Ville.CompareTo(lautre.Domicile.Ville) == -1)
+                return -1;
+
+            if (this.Domicile.Rue.CompareTo(lautre.Domicile.Rue) == 1)
+                return 1;
+            if (this.Domicile.Rue.CompareTo(lautre.Domicile.Rue) == -1)
+                return -1;
+
+            return(this.Domicile.NumCivique.CompareTo(lautre.Domicile.NumCivique));
+
+        }
+
         Util _u = new();
 
         //---------------------------------------------
@@ -69,7 +85,7 @@ namespace AtelierOO_102
         //---------------------------------------------
         public Humain(string n)
         {
-            _u.Sep("Cons Humain 1 param");
+            //_u.Sep("Cons Humain 1 param");
 
             Nom = n;
             Naissance = DateTime.Now;
