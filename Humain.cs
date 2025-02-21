@@ -47,7 +47,7 @@ namespace AtelierOO_102
         public DateTime Naissance { get; set; }
 
         public string Genre { get; set; }
-        public string Nom { get; set; }
+        protected string Nom { get; set; }
         public Adresse Domicile { get; set; }
 
         public int CompareTo(Humain lautre)

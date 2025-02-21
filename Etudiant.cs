@@ -37,6 +37,7 @@ namespace AtelierOO_102
         }
         public void Afficher()
         {
+            Console.Write(Nom);
             base.Afficher();
             Console.WriteLine($"mat:{_matricule}, étudie en {_programme} ({_moyenne*100}%)  ");
         }

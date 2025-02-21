@@ -101,7 +101,7 @@ namespace AtelierOO_102
             foreach(Humain h in _electeurs)
             {
                 sb = new();
-                sb.Append(h.Nom);
+                //sb.Append(h.Nom);
                 sb.Append(";");
                 sb.Append(h.Naissance.Year);
                 sb.Append(";");

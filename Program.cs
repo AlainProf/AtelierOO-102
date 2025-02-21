@@ -33,7 +33,7 @@ namespace AtelierOO_102
 
                  catch (Exception ex)
                 {
-                    Console.WriteLine("\n\nATTENTION!!! \tException rencontrée : " + ex.Message);
+                   Console.WriteLine("\n\nATTENTION!!! \tException rencontrée : " + ex.Message);
                     Console.Write("Voulez vous poursuivre? (o/n)");   
                     char dec = u.SaisirChar();  
                     if (dec != 'o' && dec != 'O')
@@ -93,6 +93,8 @@ namespace AtelierOO_102
             Console.WriteLine(" L: Listes en C#");
             Console.WriteLine(" M: Fichiers en C#");
             Console.WriteLine(" N: Puissance 4");
+            Console.WriteLine(" O: Pile et File");
+            Console.WriteLine(" P: Tableau à deux diensions");
             Console.WriteLine("\n Q: Quitter");
             Console.Write("\n\nVotre choix:");
 
@@ -109,6 +111,14 @@ namespace AtelierOO_102
 
             switch (choix)
             {
+                case ('p'):
+                    exp.ExecTab2D();
+                    break;
+
+                case ('o'):
+                    exp.ExecPileEtFile();
+                    break;
+
                 case ('a'):
                     exp.ExploInterface();
                     break;

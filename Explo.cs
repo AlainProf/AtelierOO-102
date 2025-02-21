@@ -14,6 +14,10 @@ namespace AtelierOO_102
 {
     internal class Explo
     {
+        const int NB_COLONNNES = 27;
+        const int NB_RANGEES = 27;
+
+
         Util u = new Util();
         const int TAILLE = 10;
         int[] tabEntiers = new int[TAILLE];
@@ -411,6 +415,154 @@ namespace AtelierOO_102
             }
 
             u.Pause();
+        }
+
+        public void ExecPileEtFile()
+        {
+            u.Titre("Pile et file (stack et queue)");
+
+            Queue<Voiture> laveAuto = new Queue<Voiture>();
+            u.Sep("File originale");
+            Voiture v = new Voiture("Asuna");
+            v.Afficher();
+            laveAuto.Enqueue(v);
+
+            v = new Voiture("BMW");
+            v.Afficher();
+            laveAuto.Enqueue(v);
+
+            v = new Voiture("Chrysler");
+            v.Afficher();
+            laveAuto.Enqueue(v);
+
+            u.Sep("Vidage de la file");
+
+            while (laveAuto.Count > 0)
+            {
+                v = laveAuto.Dequeue();
+                v.Afficher();
+            }
+
+            u.Pause();
+
+            Stack<Voiture> entree = new Stack<Voiture>();
+
+            u.Sep("Pile originale");
+            v = new Voiture("Asuna");
+            v.Afficher();
+            entree.Push(v);
+
+            v = new Voiture("BMW");
+            v.Afficher();
+            entree.Push(v);
+
+            v = new Voiture("Chrysler");
+            v.Afficher();
+            entree.Push(v);
+
+            u.Sep("Fin de la fête les voitures sortes de l'entrée");
+
+            while (entree.Count > 0)
+            {
+                v = entree.Pop();
+                v.Afficher();
+            }
+
+            u.Pause();
+        }
+
+
+        public void ExecTab2D()
+        {
+            u.Titre("Tableau 2 d");
+
+            char[,] grille = new char[NB_COLONNNES, NB_RANGEES];
+
+            u.Sep("Lettres verticales");
+            InitGrille(ref grille);
+            AfficherGrille(grille);
+
+            u.Pause();
+            u.ViderEcran();
+            u.Sep("\n\nLettres horizontales");
+            InitGrilleH(ref grille);
+            AfficherGrille(grille);
+
+            u.Pause();
+            u.ViderEcran();
+            u.Sep("\n\nX O et vide aléatoire");
+            InitGrilleA(ref grille);
+            AfficherGrille(grille);
+
+            u.Pause();
+        }
+
+        void InitGrille(ref char[,] g)
+        {
+            int iter = 65;
+            for (int x = 0; x < NB_COLONNNES; x++)
+            {
+                for (int y = 0; y < NB_RANGEES; y++)
+                {
+                    if (iter > 90)
+                    {
+                        iter = 65;
+                    }
+                    g[x, y] = (char)iter;
+                    iter++;
+                }
+            }
+        }
+        void InitGrilleH(ref char[,] g)
+        {
+            int iter = 65;
+            for (int y = 0; y < NB_RANGEES; y++)
+            {
+                for (int x = 0; x < NB_COLONNNES; x++)
+                {
+                    if (iter > 90)
+                    {
+                        iter = 65;
+                    }
+                    g[x, y] = (char)iter;
+                    iter++;
+                }
+            }
+        }
+        void InitGrilleA(ref char[,] g)
+        {
+           
+            for (int y = 0; y < NB_RANGEES; y++)
+            {
+                for (int x = 0; x < NB_COLONNNES; x++)
+                {
+                    switch(u.rdm.Next(0,3))
+                    {
+                        case 0:
+                            g[x, y] = 'O';
+                            break;
+                        case 1:
+                            g[x, y] = 'X';
+                            break;
+                        case 2:
+                            g[x, y] = '_';
+                            break;
+                    }
+                }
+            }
+        }
+        void AfficherGrille(char[,] g)
+        {
+            for (int x = 0; x < NB_COLONNNES; x++)
+            {
+                for (int y = 0; y < NB_RANGEES; y++)
+                {
+                    Console.SetCursorPosition(x * 4 + 10, y + 10);
+                    Console.Write("|_");
+                    Console.Write(g[x, y]);
+                    Console.Write("_|");
+                }
+            }
         }
     }
 }
