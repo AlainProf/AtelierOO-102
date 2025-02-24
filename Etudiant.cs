@@ -8,6 +8,7 @@ namespace AtelierOO_102
 {
     internal class Etudiant : Humain
     {
+        static int matMax = 1000000;
         string _matricule;
         string _programme;
         double _moyenne;
@@ -28,18 +29,24 @@ namespace AtelierOO_102
             _programme = prog;
             _moyenne = moy;
         }
-        public Etudiant(string n, DateTime nais, string g, string mat, string prog, double moy):base(n,nais,g)
+        public Etudiant(string n, DateTime nais, string g, string mat, string prog, double moy) : base(n, nais, g)
         {
             _u.Sep("Cons Etudiant 6 param");
             _matricule = mat;
             _programme = prog;
             _moyenne = moy;
         }
-        public void Afficher()
+        public Etudiant(string n, DateTime nais, string g, Adresse dom, string prog, double moy) : base(n, nais, g, dom)
         {
-            Console.Write(Nom);
+            matMax++;
+            _matricule = matMax.ToString(); 
+            _programme = prog;
+            _moyenne = moy;
+        }
+        public override void Afficher()
+        {
             base.Afficher();
-            Console.WriteLine($"mat:{_matricule}, étudie en {_programme} ({_moyenne*100}%)  ");
+            Console.Write($" Mat:{_matricule}, étudie en {_programme} ({_moyenne}%)");
         }
 
     }

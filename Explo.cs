@@ -564,6 +564,56 @@ namespace AtelierOO_102
                 }
             }
         }
+
+        public void GenererBD(int max=1000000)
+        {
+            u.Titre($"Génération de {max} humains");
+            List<Humain> population = new List<Humain>();
+
+            Humain h;
+            for (int i = 0; i < max; i++)
+            {
+                h = Humain.GenererAlea();
+                population.Add(h);
+            }
+            u.Pause();
+
+            u.Sep($"Les {max} humains (1 sur 100):");
+
+            int iter = 0;
+           /*
+            * foreach(Humain h2 in population)
+            {
+                iter++;
+                if (iter % 1000 == 0)
+                {
+                    Console.WriteLine();
+                    h2.Afficher();
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.Write(".");
+                }
+
+                //h2.Domicile.Afficher();
+                //Console.WriteLine("------------------------------------------");
+            }*/
+            u.Pause();
+
+
+            //----------------------------------------------------------
+            StringBuilder sb; 
+
+            // Le deuxième param: si TRUE == mode append; si false (ou absent) le fichier de destination est flushé avant l'écriture
+            StreamWriter sw = new StreamWriter(@"D:\alino\2C6-102\baseDeDonnees.txt");
+            foreach (Humain h2 in population)
+            {
+                sw.WriteLine(h2.Nom);
+            }
+            sw.Close();
+            u.Pause();
+        }
     }
 }
 

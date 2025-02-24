@@ -95,6 +95,7 @@ namespace AtelierOO_102
             Console.WriteLine(" N: Puissance 4");
             Console.WriteLine(" O: Pile et File");
             Console.WriteLine(" P: Tableau à deux diensions");
+            Console.WriteLine(" R: constRuction de la BD");
             Console.WriteLine("\n Q: Quitter");
             Console.Write("\n\nVotre choix:");
 
@@ -111,6 +112,10 @@ namespace AtelierOO_102
 
             switch (choix)
             {
+                case ('r'):
+                    exp.GenererBD();
+                    break;
+
                 case ('p'):
                     exp.ExecTab2D();
                     break;
