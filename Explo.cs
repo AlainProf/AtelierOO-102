@@ -567,6 +567,10 @@ namespace AtelierOO_102
 
         public void GenererBD(int max=1000000)
         {
+            u.Titre("Fonction désactivé");
+            u.Pause();
+            return;
+
             u.Titre($"Génération de {max} humains");
             List<Humain> population = new List<Humain>();
 
@@ -578,38 +582,32 @@ namespace AtelierOO_102
             }
             u.Pause();
 
-            u.Sep($"Les {max} humains (1 sur 100):");
-
-            int iter = 0;
-           /*
-            * foreach(Humain h2 in population)
-            {
-                iter++;
-                if (iter % 1000 == 0)
-                {
-                    Console.WriteLine();
-                    h2.Afficher();
-                    Console.WriteLine();
-                }
-                else
-                {
-                    Console.Write(".");
-                }
-
-                //h2.Domicile.Afficher();
-                //Console.WriteLine("------------------------------------------");
-            }*/
-            u.Pause();
-
-
             //----------------------------------------------------------
-            StringBuilder sb; 
+            StringBuilder sb = new(); 
 
             // Le deuxième param: si TRUE == mode append; si false (ou absent) le fichier de destination est flushé avant l'écriture
             StreamWriter sw = new StreamWriter(@"D:\alino\2C6-102\baseDeDonnees.txt");
+
+            int iter = 0;
             foreach (Humain h2 in population)
             {
-                sw.WriteLine(h2.Nom);
+                sb = new StringBuilder();   
+                iter++;
+                sb.Append($"{h2.Nom};{h2.Naissance.Year};{h2.Naissance.Month};{h2.Naissance.Day};{h2.Genre};{h2.Domicile.NumCivique};{h2.Domicile.Rue};{h2.Domicile.Ville}");
+
+                if (h2 is Etudiant )
+                {
+                    Etudiant eTmp = h2 as Etudiant;
+                    sb.Append($";{eTmp.Matricule};{eTmp.Programme};{eTmp.Moyenne}");
+                }
+                if (h2 is Stagiaire)
+                {
+                    Stagiaire stag = h2 as Stagiaire;
+                    sb.Append($";{stag.Entreprise};{stag.SalaireHoraire}");
+                }
+                sw.WriteLine(sb);
+                if (iter % 100 == 0)
+                    Console.Write(".");
             }
             sw.Close();
             u.Pause();

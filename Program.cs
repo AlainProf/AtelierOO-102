@@ -96,6 +96,10 @@ namespace AtelierOO_102
             Console.WriteLine(" O: Pile et File");
             Console.WriteLine(" P: Tableau à deux diensions");
             Console.WriteLine(" R: constRuction de la BD");
+            Console.WriteLine(" 1: recensement");
+            Console.WriteLine(" 2: liste électorale");
+            Console.WriteLine(" 3: prêt et bourses");
+            Console.WriteLine(" 4: milieux de stages");
             Console.WriteLine("\n Q: Quitter");
             Console.Write("\n\nVotre choix:");
 
@@ -109,9 +113,14 @@ namespace AtelierOO_102
         {
             char choix = u.SaisirChar();
             Explo exp = new Explo();
+            ExploPoly expPoly = new ExploPoly();    
 
             switch (choix)
             {
+                case ('1'):
+                    expPoly.Recencement();
+                    break;
+
                 case ('r'):
                     exp.GenererBD();
                     break;

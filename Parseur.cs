@@ -29,9 +29,55 @@ namespace AtelierOO_102
             int nbChamps = CompterNbChamps(infoBrute);
             h = new Humain();
             msgErr = "";
-            if (nbChamps == 5)
+
+            //   Stagiaire (13 info)
+            if (nbChamps == 13)
             {
-                //Console.WriteLine("Bingo");
+                string[] tabInfo = infoBrute.Split(';');
+                if (ValiderStagiaire(tabInfo, out string contexte))
+                {
+                    h = new Stagiaire(tabInfo[0],
+                                   new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
+                                   tabInfo[4],
+                                   new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]),
+                                   tabInfo[8], tabInfo[9], double.Parse(tabInfo[10]),
+                                   tabInfo[11], int.Parse(tabInfo[12]));
+                    return true;
+                }
+                else
+                {
+                    msgErr = $"{contexte}";
+                    return false;
+                }
+            }
+
+
+            //   Etudiant (11 info)
+            if (nbChamps == 11)
+            {
+                string[] tabInfo = infoBrute.Split(';');
+                if (ValiderEtudiant(tabInfo, out string contexte))
+                {
+
+                    h = new Etudiant(tabInfo[0],
+                                   new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
+                                   tabInfo[4],
+                                   new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]),
+                                   tabInfo[8], tabInfo[9], double.Parse(tabInfo[10]));
+                    return true;
+                }
+                else
+                {
+                    msgErr = $"{contexte}";
+                    return false;
+                }
+
+
+            }
+
+            //   Humain pur
+            if (nbChamps == 8)
+            {
                 string[] tabInfo = infoBrute.Split(';');
 
                 if (Valider(tabInfo, out string contexte))
@@ -39,8 +85,8 @@ namespace AtelierOO_102
 
                     h = new Humain(tabInfo[0],
                                    new DateTime(int.Parse(tabInfo[1]), int.Parse(tabInfo[2]), int.Parse(tabInfo[3])),
-                                   tabInfo[4]);
-                    //h.Domicile = new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]);
+                                   tabInfo[4],
+                                   new Adresse(tabInfo[5], tabInfo[6], tabInfo[7]));
                     return true;
                 }
                 else
@@ -72,22 +118,29 @@ namespace AtelierOO_102
                 contexte = ErreursAtelier.NomTropCourt.ToString();
                 return false;
             }
-            if (int.TryParse(tabInfo[1], out int an) )
-            {
-                if (an > 2007)
-                {
-                    contexte = ErreursAtelier.ElecteurMineur.ToString();
-                    return false;
-                }
-                if (an < 1926)
-                {
-                    contexte = ErreursAtelier.ElecteurSenile.ToString();
-                    return false;
-                }
-            }
 
             return true;    
         }
+
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        bool ValiderEtudiant(string[] tabInfo, out string contexte)
+        {
+            contexte = "";
+            return true;
+        }
+
+        //---------------------------------------------
+        //
+        //---------------------------------------------
+        bool ValiderStagiaire(string[] tabInfo, out string contexte)
+        {
+            contexte = "";
+            return true;
+        }
+
 
         //---------------------------------------------
         //
