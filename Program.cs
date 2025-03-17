@@ -121,6 +121,16 @@ namespace AtelierOO_102
                     expPoly.Recencement();
                     break;
 
+                case ('2'):
+                    expPoly.ListeElectorale();
+                    break;
+                case ('3'):
+                    expPoly.PretBourse();
+                    break;
+                case ('4'):
+                    expPoly.MilieuStage();
+                    break;
+
                 case ('r'):
                     exp.GenererBD();
                     break;

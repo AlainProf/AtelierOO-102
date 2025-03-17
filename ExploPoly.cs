@@ -53,6 +53,16 @@ namespace AtelierOO_102
             }
             return cpm;
         }
+        int CompterAdultes()
+        {
+            int cpm = 0;
+            foreach (Humain h in population)
+            {
+                if (h.Age() >= 18)
+                    cpm++;
+            }
+            return cpm;
+        }
         int CompterRetraites()
         {
             int cpm = 0;
@@ -94,9 +104,46 @@ namespace AtelierOO_102
             return cpm;
         }
 
+        int CompterEtudiants()
+        {
+            int cpm = 0;
+            foreach (Humain h in population)
+            {
+                if (h is Etudiant)
+                    cpm++;
+            }
+            return cpm;
+        }
+
+        int CompterStagiaires()
+        {
+            int cpm = 0;
+            foreach (Humain h in population)
+            {
+                if (h is Stagiaire)
+                    cpm++;
+            }
+            return cpm;
+        }
+        double CompterSalaireHorairetotal()
+        {
+            double cpm = 0;
+            foreach (Humain h in population)
+            {
+                if (h is Stagiaire)
+                {
+                    Stagiaire s = h as Stagiaire;    
+                    cpm += s.SalaireHoraire;
+                }
+            }
+            return cpm;
+        }
+
         private void ChargerPopulation()
         {
-            u.Titre("Recensement");
+            if (population.Count > 0)
+                return;
+            
             string FICHIER_POPULATION = "d:\\alino\\2C6-102\\baseDeDonnees.txt";
             if (File.Exists(FICHIER_POPULATION))
             {
@@ -140,6 +187,45 @@ namespace AtelierOO_102
             {
                 Console.WriteLine($"Erreur le fichier {FICHIER_POPULATION} n'existe pas...");
             }
+            u.Pause();
+        }
+
+        public void ListeElectorale()
+        {
+            u.Titre("Nb Electeurs");
+            ChargerPopulation();
+
+            int nbElecteurs = CompterAdultes();
+
+            Console.WriteLine($"la population compte {nbElecteurs} électeurs");
+
+            u.Pause();
+
+
+        }
+
+        public void PretBourse()
+        {
+            u.Titre("Nb Etudiants");
+            ChargerPopulation();
+
+            int nbEtudiants = CompterEtudiants();
+
+            Console.WriteLine($"la population compte {nbEtudiants} étudiants");
+
+            u.Pause();
+
+        }
+        public void MilieuStage()
+        {
+            u.Titre("Salaire moyen stagiaires");
+            ChargerPopulation();
+
+            int nbStagiaires = CompterStagiaires();
+            double totalRevenus = CompterSalaireHorairetotal();
+
+            Console.WriteLine($"le taux horaire moyen des {nbStagiaires} stagiaires == {totalRevenus/nbStagiaires} $");
+
             u.Pause();
         }
     }
